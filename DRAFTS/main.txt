@@ -21,7 +21,7 @@
 % 4.NUMERICAL METHODS 2 DNS: (Carlos thesis) + Appendices GPU
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 5.PIPE FLOW MODEL: Explain it + Numerical methods
+% 5.PIPE FLOW MODEL: Explain it + Numerical methods (APPENDIX?)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 6.TRANSITION MECHANISMS IN PULSATILE PIPE FLOW (wvfm)
