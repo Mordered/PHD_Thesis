@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Chap5_Barkley.aux
+The style file: alpha.bst
+Database file #1: sample.bib
+Warning--can't use both volume and number fields in barkley2011modeling
+You've used 1 entry,
+            2543 wiz_defined-function locations,
+            566 strings with 4601 characters,
+and the built_in function-call counts, 491 in all, are:
+= -- 51
+> -- 8
+< -- 3
++ -- 2
+- -- 2
+* -- 26
+:= -- 71
+add.period$ -- 4
+call.type$ -- 1
+change.case$ -- 5
+chr.to.int$ -- 1
+cite$ -- 2
+duplicate$ -- 31
+empty$ -- 39
+format.name$ -- 4
+if$ -- 114
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 1
+newline$ -- 8
+num.names$ -- 3
+pop$ -- 7
+preamble$ -- 1
+purify$ -- 6
+quote$ -- 0
+skip$ -- 29
+stack$ -- 0
+substring$ -- 19
+swap$ -- 17
+text.length$ -- 3
+text.prefix$ -- 1
+top$ -- 0
+type$ -- 8
+warning$ -- 1
+while$ -- 3
+width$ -- 2
+write$ -- 17
+(There was 1 warning)
