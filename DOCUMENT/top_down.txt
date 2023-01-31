@@ -1,0 +1,49 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               TRANSITION IN PULSATILE PIPE FLOW              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 1.INTRODUCTION: transition + transient regime
+%   1.1.Transition in steady pipe flow (linear stability + TGA)
+%   1.2.Transition regime in steady pipe flow (puffs, slugs...)
+%                 BARKLEY MODEL FOR PIPE FLOW  
+%   1.3.Transition in pulsatile pipe flow (use effect of wvfm)
+%   1.4.Transition regime in pulsatile pipe flow
+%   1.5.Scope and outline of the thesis
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 2.MATHEMATICAL MODEL: NSEs + LNSEs + pipe flow + pulsatile
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3.NUMERICAL METHODS 1 STABILITY ANALYSIS: TGA + LSA
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 4.NUMERICAL METHODS 2 DNS: (Carlos thesis) + Appendices GPU
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 5.PIPE FLOW MODEL: Explain it + Numerical methods (APPENDIX?)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 6.TRANSITION MECHANISMS IN PULSATILE PIPE FLOW (wvfm)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 7.TURBULENCE IN THE TRANSITION REGIME 
+       (Barkley + Entropy + wvfm + FOR)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 8.MODEL OF PULSATILE PIPE FLOW IN THE TRANSITION REGIME
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 9. ?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 10.CONCLUSION
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------       APPENDIX         ------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AP1: PARALELIZATION STRATEGIES CPU VS GPU
+
+% AP2: DESCRIPTION AND USER GUIDE OF GPU CODE
+
+% AP3: DNS + GRID
