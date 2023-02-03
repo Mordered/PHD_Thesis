@@ -21,14 +21,26 @@
 % - We finally show the effect some parameters have in the model.
 The model proposed by Barkley \cite{barkley2011modeling}, known as the Barkley Model, BM, is able to reproduce the behaviour of turbulent puffs and slugs in steady pipe flow. It consider two one dimensional time dependent variables whose evolution is described by coupled, non-linear advection-diffusion-reaction partial differential equations. In this chapter we describe the model, we summarize the main ideas behind it and how we interpret them. We finally discuss the results of the model for steady pipe flow and the effect of its parameters. 
 
-% In chapter 8 we describe an adapted version of the model for pulsatile pipe flow.
 
+% In chapter 8 we describe an adapted version of the model for pulsatile pipe flow.
 
 % Main idea and definition:
 \section{Definition of the BM}
 % - Main idea of the model: three steps
-The BM considers 
-%   · interplay between mean shear and turbulence (nullclines?)
+According to Barkley, puffs and slugs in steady pipe flow can be described simply by the interaction between the local turbulence intensity and mean shear of the flow. In their model the turbulence intensity is modeled by the variable $q \left(x,t\right)$ that depends only on time $t$ and on the axial direction $x$. The mean shear is modelled by the variable $u\left(x,t \right)$ that, as a proxy to the mean shear, corresponds to the centerline velocity at each axial location of the pipe. 
+
+The core idea of the BM is the non-linear interaction between $q$ and $u$. Turbulence intensity $q$ takes advantage of the mean shear $u$ to grow. The bigger $u$ is the more energy can $q$ use to grow. The most energetic mean shear possible is exactly the laminar profile, with $u=2$. However as $q$ grows, the local mean profile is blunted, and the centerline velocity $u$ decreases. This has a negative effect on the growth of $q$, and, depending on the  parameters of the BM, result in a fully laminar state with $q=0$ and $u=2$, or an equilibrium state with $q>0$ and $u<2$ at all or several $x$.
+
+In this section we describe the BM, from its local dynamics to the whole system of equations. Although the equations of $q$ and $u$ are not originally derived from the NSE, we try to draw parallelisms between them and the model variables and parameters.
+
+
+%   · local dynamics (nullclines?)
+\subsection{Local dynamics}
+
+
+
+
+
 %   · advection/diffusion (excitable media!)
 %   · noise
 
