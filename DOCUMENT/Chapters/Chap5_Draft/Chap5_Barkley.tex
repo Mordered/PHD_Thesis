@@ -19,27 +19,30 @@
 % - Explain in two lines what the model does.
 % - We show the model and we discuss how we interpret it.
 % - We finally show the effect some parameters have in the model.
-The model proposed by Barkley \cite{barkley2011modeling}, known as the Barkley Model, BM, is able to reproduce the behaviour of turbulent puffs and slugs in steady pipe flow. It consider two one dimensional time dependent variables whose evolution is described by coupled, non-linear advection-diffusion-reaction partial differential equations. In this chapter we describe the model, we summarize the main ideas behind it and how we interpret them. We finally discuss the results of the model for steady pipe flow and the effect of its parameters. 
+The model proposed by Barkley \cite{barkley2011modeling}, known as the Barkley Model (BM) is able to reproduce the behaviour of turbulent puffs and slugs in steady pipe flow. It considers only two one dimensional time dependent variables whose evolution is described by coupled, non-linear advection-diffusion-reaction partial differential equations. In this chapter we describe the model, we summarize the main ideas behind it and how we interpret them. We finally discuss the results of the model for steady pipe flow and the effect of its parameters, together with some limitations. 
 
-
-% In chapter 8 we describe an adapted version of the model for pulsatile pipe flow.
+% We use this description in chapter 8, when we describe an adapted version of the model for pulsatile pipe flow.
 
 % Main idea and definition:
 \section{Definition of the BM}
 % - Main idea of the model: three steps
-According to Barkley, puffs and slugs in steady pipe flow can be described simply by the interaction between the local turbulence intensity and mean shear of the flow. In their model the turbulence intensity is represented by the variable $q \left(x,t\right)$ that depends only on time $t$ and on the axial direction $x$. The mean shear is modelled by the variable $u\left(x,t \right)$ that, as a proxy to the mean shear, corresponds to the centerline velocity at each axial location of the pipe. 
+The BM considers the variables $q\left(x,t\right)$ and $u\left(x,t\right)$. Here $q$ represents the turbulence intensity and $u$ the state of the mean shear on each axial location $x$ and time $t$. As a proxy to the mean shear, Barkley considers the centerline velocity. When the centerline velocity is maximum at $u=2$ the flow is locally laminar as the centerline velocity of the parabolic profile is recovered. Otherwise, when the flow is locally disturbed, the centerline velocity is $u < 2$. The turbulence intensity $q$ is always either $q=0$, which models the case of no turbulence or laminar flow, or $q>0$.
 
-The core idea of the BM is the non-linear interaction between $q$ and $u$. Turbulence intensity $q$ takes advantage of the mean shear to grow. The most energetic mean shear possible is exactly the laminar profile, with centerline $u=2$. However as $q$ grows, the local mean profile is blunted, and the centerline velocity $u$ decreases. This has a negative effect on the growth of $q$, and, depending on the  parameters of the BM, result in a fully laminar state with $q=0$ and $u=2$, or an equilibrium state with $q>0$ and $u<2$ at all or several $x$.
+The main idea of the BM is the non-linear interaction between $u$ and $q$: the turbulence intensity $q$ takes advantage of the mean shear $u$ to grow, but the mean shear decreases when $q>0$, which results in a decrease in the growth rate of $q$. On top of this local interaction the model includes advection-diffusion and stochastic effects that, as we show below, are needed in order to describe the dynamics of puffs and slugs in statistically steady pipe flow. 
 
-In this section we describe the BM, from its local dynamics to the whole system of equations. Although the equations of $q$ and $u$ are not originally derived from the NSE, we try to draw parallelisms between them and the BMS variables and parameters.
+In this section we follow the derivation of the model presented in \cite{barkley2016}. We go from the local dynamics of $q$ and $u$ to the spacially extended model with advection and diffusion. We finally comment on the need to include a stochastic term to better capture the behaviour of localized turbulence in pipe flow.
 
+%   · Turbulence intensity (effect of r parameter)
+\subsection{Local dynamics of the turbulence intensity in the BM}
+The variable $q$ represents the cross-section integral of turbulence energy on an axial location $x$. However its evolution equation are not derived from the Navier-Stokes equation. Instead the local dynamics of $q$ are described by the potential equation
 
-%   · local dynamics (nullclines?)
-\subsection{Local dynamics}
+where $r$ is a control parameter and $\delta$ a model parameter. As we show below $r$ can be related with the Reynolds number of the actual pipe flow. The parameter $\delta$ loosely models the chance for transient growth of perturbations in pipe flow. The parameter is usually set to $\delta=0.1$. 
 
+At low $r$ the potential $V$ has a single minima, meaning that, at low $r$ (Reynolds number) the local dynamics have a single equilibria at $q=0$ (laminar flow). At a certain $r>r_{1}$ the potential $V$ presents a global and a local minima. The global minima corresponds to $q=0$, and the local minima to a certain $q>0$. At this $r$ the local dynamics are unconditionally stable for $q=0$, and metastable for $q>0$ (localized turbulence). As $r$ further increases to $r>r_{2}$ $q=0$ becomes a local minima of the system, while $q>0$ the global one. In this case, the laminar profile is metastable, whereas the turbulent profile is unconditionally stable. When compared with the actual behaviour of puffs and slugs in pipe flow, $r_{1}$ corresponds to the first Reynolds number at which sufficiently big perturbations are able to grow into puffs that subsequently decay. On the other hand $r_{2}$ corresponds to the first Reynolds number at which turbulence spreads, or in other words puffs elongate into slugs. 
 
+However the local dynamics of $q$ alone are not able to describe the localization of puffs for a wide range of $Re$, nor their decay and split mechanisms. 
 
-
+%   · Mean shear + Local interaction (nullclines)
 
 
 %   · advection/diffusion (excitable media!)
@@ -55,6 +58,8 @@ In this section we describe the BM, from its local dynamics to the whole system 
 % - Fit to turbulence survival.
 % - Show how other parameters donot have an effect
 
+% Limitiations of the original model 
+
 
 
 
@@ -67,3 +72,9 @@ In this section we describe the BM, from its local dynamics to the whole system 
 \bibliographystyle{alpha}
 \bibliography{sample}
 \end{document}
+
+
+
+% NEEDED MEDIA:
+% 0. Bifurcation diagram
+% 1. Null-clines
