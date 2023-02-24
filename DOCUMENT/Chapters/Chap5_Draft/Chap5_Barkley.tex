@@ -29,7 +29,7 @@ The model proposed by Barkley \cite{barkley2011modeling} (BM) is able to reprodu
 % Main idea and definition:
 \section{Definition of the BM}
 % - Main idea of the model: three steps
-The BM considers the variables $q\left(x,t\right)$ and $u\left(x,t\right)$. Here $q$ represents the turbulence intensity and $u$ the state of the mean shear at time $t$ and on each axial location $x$ of the pipe. As a proxy to the mean shear, Barkley considers the centerline velocity of the pipe. When the centerline velocity is maximum at $u=2$ the flow is locally laminar as the centerline velocity of the parabolic profile is recovered. Otherwise, when the flow is locally disturbed, the centerline velocity is $u < 2$. The turbulence intensity $q$ is always either $q=0$, which models the case of no turbulence or laminar flow, or $q>0$. 
+The BM considers the variables $q\left(x,t\right)$ and $u\left(x,t\right)$. Here $q$ represents the turbulence intensity and $u$ the state of the mean shear at time $t$ and on each axial location $x$ of the pipe. As a proxy to the mean shear, Barkley considers the centerline velocity of the pipe. When the centerline velocity is maximum at $u=U_{c}$ the flow is locally laminar as the centerline velocity of the parabolic profile is recovered. Otherwise, when the flow is locally disturbed, the centerline velocity is $u < U_{c}$. The turbulence intensity $q$ is always either $q=0$, which models the case of no turbulence or laminar flow, or $q>0$. 
 
 The main idea of the BM is the non-linear interaction between $u$ and $q$: the turbulence intensity $q$ takes advantage of the mean shear $u$ to grow, but the mean shear decreases when $q>0$. These dynamics are local in $x$, and can be modeled with a pair of non-linearly coupled ordinary differential equations. On top of this local interaction the model includes advection-diffusion and stochastic effects that, as we show below, are needed in order to describe the dynamics of puffs and slugs in statistically steady pipe flow. 
 
@@ -61,11 +61,11 @@ A similar equation to eq~\ref{eq:loc_q_0}, was first proposed by Landau CITE, to
 
 %   · Mean shear 
 \subsection{Local dynamics of the mean shear}
-The variable $u$ corresponds to the centerline velocity of the pipe flow, as a proxy of the state of the local mean shear. When the mean shear is not disturbed, $u$ is maximum and equal to the centerline velocity of the laminar (parabolic) profile $u=U_{c}=2$. When the mean shear is disturbed, $u<2$. The model assumes that the most disturbed mean shear possible corresponds to a plug like profile, where the centerline velocity equals the bulk velocity $u=U=1$. 
+The variable $u$ corresponds to the centerline velocity of the pipe flow, as a proxy of the state of the local mean shear. When the mean shear is not disturbed, $u$ is maximum and equal to the centerline velocity of the laminar (parabolic) profile $u=U_{c}$. When the mean shear is disturbed, $u<U_{c}$. The model assumes that the most disturbed mean shear possible corresponds to a plug like profile, where the centerline velocity equals the bulk velocity $u=U$. 
 
 The ordinary differential equation that describes the evolution of $u$ is not derived from the Navier--Stokes equation. Instead it is modeled as:
 \begin{align}
-\dot{u}= \epsilon_{1} \left(2-u \right) + \epsilon_{2} \left(1-u \right)q \text{,}
+\dot{u}= \epsilon_{1} \left(U_{c}-u \right) + \epsilon_{2} \left(U-u \right)q \text{,}
 \label{eq:loc_u}
 \end{align}
 
@@ -76,41 +76,65 @@ where $\epsilon_{1}$ and $\epsilon_{2}$ are model parameters. The equation is de
 
 
 %   · Local interactions
-\subsection{Local non-linear interactions}
+\subsection{Non-linear interactions}
 The evolution of $u$, eq.~\ref{eq:loc_u}, considers the effect $q$ has on $u$. However the equation for $q$, eq.~\ref{eq:loc_q_0}, does not include a coupling to the mean shear. Barkley corrects this by changing eq.~\ref{eq:loc_q_0} to: 
 \begin{align}
-\dot{q}=q \left[r+u-2-\left(r+\delta \right) \left(q -1 \right)^{2} \right]\text{.}
+\dot{q}=q \left[r+u-U_{c}-\left(r+\delta \right) \left(q -1 \right)^{2} \right]\text{.}
 \label{eq:loc_q}
 \end{align}
 
 The idea is that the growth of $q$ is maximum when $u \equiv  2$, or when the mean profile is parabolic (laminar profile). This is in line with direct numerical simulations and experiment results, where a blunter profile has been linked with a decrease in turbulence lifetime CITE.
 
-The non-linearly coupled ordinary differential equations eq.~\ref{eq:loc_q} and eq.~\ref{eq:loc_u} describe the local dynamics of $q$ and $u$. For fixed $\delta$, $\epsilon$ and $\epsilon_{2}$, they only depend on the control parameter $r$ that sets the equilibrium points of the equations $\dot{q}=\dot{u}=0$. In figure ... we plot the position of the equilibrium points and the phase diagram of the system for different $r$. 
+The non-linearly coupled ordinary differential equations eq.~\ref{eq:loc_q} and eq.~\ref{eq:loc_u} describe the local dynamics of $q$ and $u$. For fixed $\delta$, $\epsilon$ and $\epsilon_{2}$, see table ... , they only depend on the control parameter $r$ that sets the equilibrium points of the equations $\dot{q}=\dot{u}=0$. In figure ... we plot the position of the equilibrium points and the phase diagram of the system for different $r$. 
 
-At $r=r_{1}$ (figure a) the system has a single point of equilibrium at $u=q=0$ (laminar flow). However, at this $r$, when sufficiently perturbed, the system can have $q>0$ during a certain time span before returning to $q=0$. This corresponds to an excitable media, a dynamical system that has only one stable equilibrium point, but that can be perturbed to an excitable state. Once excited the system takes a certain time to relax again to its equilibrium condition, and to be able to be excited again (refractory time, length). This models the behaviour of puffs, that can be triggered by exciting the laminar profile. Once a puff has been triggered one needs to wait a certain refractory length to trigger a second puff. 
 
-At $r=r_{2}>r_{1}$ the system has two stable equilibrium points at $q=u=0$ (laminar flow) and $q>0$ $u<2$ (turbulent flow). This corresponds to a bi-stable system, and models the behaviour of slugs where a region of turbulent flow is stable and expands in a quiescent laminar one. 
 
 %   · advection/diffusion (front speeds)
 \subsection{Spatially extended model}
 
 
 
+
+
+
+%    · about puffs and slugs in the BM
+\subsection{About puffs and slugs in the BM}
+
+
+
+At $r=r_{1}$ (figure a) the system has a single point of equilibrium at $u=q=0$ (laminar flow). However, at this $r$, when sufficiently perturbed, the system can have $q>0$ during a certain time span before returning to $q=0$. This corresponds to an excitable media, a dynamical system that has only one stable equilibrium point, but that can be perturbed to an excitable state. Once excited the system takes a certain time to relax again to its equilibrium condition, and to be able to be excited again (refractory time, length). This models the behaviour of puffs, that can be triggered by exciting the laminar profile. Once a puff has been triggered one needs to wait a certain refractory length to trigger a second puff. 
+
+At $r=r_{2}>r_{1}$ the system has two stable equilibrium points at $q=u=0$ (laminar flow) and $q>0$ $u<2$ (turbulent flow). This corresponds to a bi-stable system, and models the behaviour of slugs where a region of turbulent flow is stable and expands in a quiescent laminar one. The model is able to distinguish between weak $r_{3}>r>r_{2}$ and strong slugs $r>r_{3}$.
+
+
+
+
 %   · noise
+\subsection{Stochastic model}
+Puffs and slugs are chaotic structures. Puffs can (randomly) decay, or split, and slugs present intermittent behaviours, with sudden changes of front speed or relaminarization in some section of their core. The PDEs in equations --- --- donot result in chaotic dynamics. In order to model decay, split or even intermittency, A stochastic term is included in the model as:
+
+
+being $\tau$ white gaussian noise in space and time, and $\sigma$ the strength of the noise. Unless the effect of split or decay are needed, the stochastic term is usually ignored.
 
 
 
 
-% Effect of parameters:
-% - Fit to front speeds.
+% Results using the model
+\section{Results of the model}
+By fitting the model parameters, see table ..., the BM can perfectly reproduce the front speeds of puffs and slugs for a huge number of $Re$. The front speeds measure the velocity at which the puffs and slugs are advected or elongate in pipe flow. In the case of the puff the upstream $c_{u}$ and downstream velocity $c_{d}$ are equal, while for the case of the slug $c_{d}>c_{u}$. The case of a strong slug also satisfies $c_{d}\approx 2U-c_{u}$. Recent results suggest that the model gives a perfect estimation of $c_{u}$ and $c_{d}$ at $Re$ as high as ... CITE. With the inclusion of the stochastic term the model also approximates the lifetimes of puffs and slugs. In this section we show the robustness of the model to parameter changes, and comment on limitations of the model that, as we will show later, are critical for the correct extension of the model to pulsatile pipe flow. 
 
-%The model is able to distinguish between weak $r_{3}>r>r_{2}$ and strong slugs $r>r_{3}$,
-
-% - Fit to turbulence survival.
 % - Show how other parameters donot have an effect
+\subsection{Effect of changing parameters}
+In its original paper, Barkley shows the robustness of his model after changing its parameters. In the extended model of pulsatile pipe flow, we select a slighly different set of parameters to those in table --- In this subsection we show the little effect they have on the front speeds of puffs in steady pipe flow. In figure ... we show both the front speeds using the original fit of Barkley, and in the front speeds after changing the parameters to a new set ... The differences between the two results are remarkably small.
 
-% Limitiations of the original model 
 
+
+
+% - Limitiations of the original model 
+%   - Shape of the puff! (downstream front speed)
+%   - Lifetimes (shape) and the importance of non-linearities
+\subsection{Limitations of the model}
+Despite being able to perfectly capture puffs and slugs front speeds
 
 
 
@@ -129,11 +153,13 @@ At $r=r_{2}>r_{1}$ the system has two stable equilibrium points at $q=u=0$ (lami
 % NEEDED MEDIA:
 % 0. 3 plots of the potential
 % 1. Mean profile + Phase-space diagram + Equilibrium points Maybe compare with DNS? (BAOFANG)
+% 2. Table of fit parameters
 
 
 % NEEDED CITATIONS:
 % Landau? the potential equation?
 % Kuhnen plug profile
+% New paper DUO and SONG about front speeds
 
 
 % Numerical method: FOR CHAPTER OF PULSATILE CASE
