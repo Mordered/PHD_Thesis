@@ -33,7 +33,7 @@ The BM considers the variables $q\left(x,t\right)$ and $u\left(x,t\right)$. Here
 
 The main idea of the BM is the non-linear interaction between $u$ and $q$: the turbulence intensity $q$ takes advantage of the mean shear $u$ to grow, but the mean shear decreases when $q>0$. These dynamics are local in $x$, and can be modeled with a pair of non-linearly coupled ordinary differential equations. On top of this local interaction the model includes advection-diffusion and stochastic effects that, as we show below, are needed in order to describe the dynamics of puffs and slugs in statistically steady pipe flow. 
 
-In this section we follow the derivation of the model presented in \cite{barkley2016}. We start with the local dynamics of $q$ and $u$. We then explain the spatially extended model, where the dynamics of $q$ and $u$ are described by the aforementioned nonlinearly-coupled advection-diffusion-reaction partial differential equations. We finally comment on the need to include a stochastic term to better capture the behaviour of localized turbulence in pipe flow.
+In this section we follow the derivation of the model presented in \cite{barkley2016}. We start with the local dynamics of $q$ and $u$. We then explain the spatially extended model, and we finally comment on the need to include a stochastic term to better capture the behaviour of localized turbulence in pipe flow.
 
 
 
@@ -44,7 +44,7 @@ In this section we follow the derivation of the model presented in \cite{barkley
 The variable $q$ represents the cross-section integral of turbulence energy on an axial location $x$. The flow is locally laminar when $q=0$ and turbulent if $q>0$. Its evolution equation is not derived from the Navier-Stokes equation. Instead the local dynamics of $q$ are described by the potential equation:
 
 \begin{align}
-\frac{\mathrm{d}q}{\mathrm{d}t}=\dot{q}= - \frac{\mathrm{d}V}{\mathrm{d}q}=q \left[r-\left(r+\delta \right) \left(q -1 \right)^{2} \right]\text{,}
+\frac{\mathrm{d}q}{\mathrm{d}t}=\dot{q}= - \frac{\mathrm{d}V}{\mathrm{d}q}= f^{*} \left(q \right)=q \left[r-\left(r+\delta \right) \left(q -1 \right)^{2} \right]\text{,}
 \label{eq:loc_q_0}
 \end{align}
 
@@ -52,7 +52,7 @@ where $r$ is a control parameter and $\delta$ a model parameter. As we show belo
 
 At low $r$ the potential $V$ has a single minima, meaning that, at low $r$ (Reynolds number) the local dynamics have a single equilibria at $q=0$ (laminar flow). At a certain $r>r_{1}$ the potential $V$ presents a global and a local minima. The global minima corresponds to $q=0$, and the local minima to a certain $q>0$. At this $r$ the local dynamics are unconditionally stable for $q=0$, and metastable for $q>0$ (localized turbulence). As $r$ further increases to $r>r_{2}$ $q=0$ becomes a local minima of the system, while $q>0$ the global one. In this case, the laminar profile is metastable, whereas the turbulent profile is unconditionally stable. When compared with the actual behaviour of puffs and slugs in pipe flow, $r_{1}$ corresponds to the first Reynolds number at which sufficiently big perturbations are able to grow into puffs that subsequently decay. On the other hand $r_{2}$ corresponds to the first Reynolds number at which turbulence spreads, or in other words, when puffs first start to elongate to become slugs. 
 
-A similar equation to eq~\ref{eq:loc_q_0}, was first proposed by Landau CITE, to model turbulence transition as a phase transition. However, it failed to describe the localization of puffs for a wide range of $Re$, and their decay and split mechanisms. 
+A similar equation to eq~\ref{eq:loc_q_0}, was first proposed by Landau CITE, to model turbulence transition as a phase transition. However, it failed to describe the localization of puffs for a wide range of $Re$, and their decay and split mechanisms. As we show below, in order to capture this behavior, one needs to consider an additional variable, the mean shear.
 
 
 
@@ -65,7 +65,7 @@ The variable $u$ corresponds to the centerline velocity of the pipe flow, as a p
 
 The ordinary differential equation that describes the evolution of $u$ is not derived from the Navier--Stokes equation. Instead it is modeled as:
 \begin{align}
-\dot{u}= \epsilon_{1} \left(U_{c}-u \right) + \epsilon_{2} \left(U-u \right)q \text{,}
+\dot{u}=g\left(q,u\right)= \epsilon_{1} \left(U_{c}-u \right) + \epsilon_{2} \left(U-u \right)q \text{,}
 \label{eq:loc_u}
 \end{align}
 
@@ -79,19 +79,33 @@ where $\epsilon_{1}$ and $\epsilon_{2}$ are model parameters. The equation is de
 \subsection{Non-linear interactions}
 The evolution of $u$, eq.~\ref{eq:loc_u}, considers the effect $q$ has on $u$. However the equation for $q$, eq.~\ref{eq:loc_q_0}, does not include a coupling to the mean shear. Barkley corrects this by changing eq.~\ref{eq:loc_q_0} to: 
 \begin{align}
-\dot{q}=q \left[r+u-U_{c}-\left(r+\delta \right) \left(q -1 \right)^{2} \right]\text{.}
+\dot{q}=f\left(q,u\right)=q \left[r+u-U_{c}-\left(r+\delta \right) \left(q -1 \right)^{2} \right]\text{.}
 \label{eq:loc_q}
 \end{align}
 
 The idea is that the growth of $q$ is maximum when $u \equiv  2$, or when the mean profile is parabolic (laminar profile). This is in line with direct numerical simulations and experiment results, where a blunter profile has been linked with a decrease in turbulence lifetime CITE.
 
-The non-linearly coupled ordinary differential equations eq.~\ref{eq:loc_q} and eq.~\ref{eq:loc_u} describe the local dynamics of $q$ and $u$. For fixed $\delta$, $\epsilon$ and $\epsilon_{2}$, see table ... , they only depend on the control parameter $r$ that sets the equilibrium points of the equations $\dot{q}=\dot{u}=0$. In figure ... we plot the position of the equilibrium points and the phase diagram of the system for different $r$. 
+The non-linearly coupled ordinary differential equations eq.~\ref{eq:loc_q} and eq.~\ref{eq:loc_u} describe the local dynamics of $q$ and $u$. For fixed $\delta$, $\epsilon$ and $\epsilon_{2}$, see table ... , they only depend on the control parameter $r$ that sets the equilibrium points of the equations $\dot{q}=\dot{u}=0$. In figure ... we plot the position of the equilibrium points and the phase diagram of the system for different $r$. Depending on $r$ the system can either have one equilibrium point (laminar) or two (laminar and turbulent).
 
 
 
 %   · advection/diffusion (front speeds)
 \subsection{Spatially extended model}
+Alone, the local interactions of the model are not able to describe the behaviour of puffs and slugs in pulsatile pipe flow. Puffs and slugs are localized structures that are advected and diffussed in the pipe. Therefore the model needs to consider spatially extended effects: advection and diffusion. 
 
+In the case of the turbulence intensity the Barkley model equation is
+\begin{align}
+\frac{\partial q}{\partial t}=-\left(u-\eta \right)\frac{\partial q}{\partial x} + f\left(q,u \right) + D\frac{\partial^{2} q}{\partial x^{2}} \text{,}
+\label{eq:PDE_q}
+\end{align}
+being $\eta$ and $D$ two new model parameters. $D$ represents the diffusion coefficient of $q$ on the axial direction. The model assumes that $q$ is advected at velocity $u$, corrected with the parameter $\eta$
+
+In the case of the centerline velocity, the equation reads
+\begin{align}
+\frac{\partial u}{\partial t}=-u\frac{\partial u}{\partial x} + g\left(q,u \right) + \frac{2}{Re}\frac{\partial^{2} u}{\partial x^{2}} \text{,}
+\label{eq:PDE_u}
+\end{align}
+where usually the last term is ignored. According to Barkley, the addition of this term does not change significantly the results.
 
 
 
@@ -99,22 +113,26 @@ The non-linearly coupled ordinary differential equations eq.~\ref{eq:loc_q} and 
 
 %    · about puffs and slugs in the BM
 \subsection{About puffs and slugs in the BM}
-
-
+Equations \ref{eq:PDE_q} and \ref{eq:PDE_u} together with \ref{eq:loc_q} and \ref{eq:loc_u}, define the deterministic version of the original Barkley Model. When its 7 parameters are correctly fitted, the model is able to perfectly capture the front speeds of puffs and slugs in pipe flow. More importantly the model indicates what kind of dynamical systems a puff and a slug are.
 
 At $r=r_{1}$ (figure a) the system has a single point of equilibrium at $u=q=0$ (laminar flow). However, at this $r$, when sufficiently perturbed, the system can have $q>0$ during a certain time span before returning to $q=0$. This corresponds to an excitable media, a dynamical system that has only one stable equilibrium point, but that can be perturbed to an excitable state. Once excited the system takes a certain time to relax again to its equilibrium condition, and to be able to be excited again (refractory time, length). This models the behaviour of puffs, that can be triggered by exciting the laminar profile. Once a puff has been triggered one needs to wait a certain refractory length to trigger a second puff. 
 
-At $r=r_{2}>r_{1}$ the system has two stable equilibrium points at $q=u=0$ (laminar flow) and $q>0$ $u<2$ (turbulent flow). This corresponds to a bi-stable system, and models the behaviour of slugs where a region of turbulent flow is stable and expands in a quiescent laminar one. The model is able to distinguish between weak $r_{3}>r>r_{2}$ and strong slugs $r>r_{3}$.
+At $r=r_{2}>r_{1}$ the system has two stable equilibrium points at $q=u=0$ (laminar flow) and $q>0$ $u<2$ (turbulent flow). This corresponds to a bi-stable system, and models the behaviour of slugs where a region of turbulent flow is stable and expands in a quiescent laminar one. The model is able to distinguish between weak $r_{3}>r>r_{2}$ and strong slugs $r>r_{3}$. 
+
 
 
 
 
 %   · noise
 \subsection{Stochastic model}
-Puffs and slugs are chaotic structures. Puffs can (randomly) decay, or split, and slugs present intermittent behaviours, with sudden changes of front speed or relaminarization in some section of their core. The PDEs in equations --- --- donot result in chaotic dynamics. In order to model decay, split or even intermittency, A stochastic term is included in the model as:
+Puffs and slugs are chaotic structures. Puffs can (randomly) decay, or split, and slugs present intermittent behaviours, with sudden changes of front speed or relaminarization in some section of their core. The PDEs in equations \ref{eq:PDE_q} and \ref{eq:PDE_u} donot result in chaotic dynamics. In order to model decay, split or even intermittency, A stochastic term is included in the model as:
+\begin{align}
+\frac{\partial q}{\partial t}=-\left(u-\eta \right)\frac{\partial q}{\partial x} + f\left(q,u \right) + D\frac{\partial^{2} q}{\partial x^{2}} + \sigma \tau \left(t,x\right) q \text{,}
+\label{eq:SPDE_q}
+\end{align}
+being $\tau$ white gaussian noise in space and time, and $\sigma$ the strength of the noise. 
 
-
-being $\tau$ white gaussian noise in space and time, and $\sigma$ the strength of the noise. Unless the effect of split or decay are needed, the stochastic term is usually ignored.
+Equations \ref{eq:SPDE_q} and \ref{eq:PDE_u} together with \ref{eq:loc_q} and \ref{eq:loc_u}, define the original Barkley Model. The model includes 7 parameters and one control parameter.
 
 
 
@@ -134,7 +152,11 @@ In its original paper, Barkley shows the robustness of his model after changing 
 %   - Shape of the puff! (downstream front speed)
 %   - Lifetimes (shape) and the importance of non-linearities
 \subsection{Limitations of the model}
-Despite being able to perfectly capture puffs and slugs front speeds
+Despite being able to perfectly capture puffs and slugs front speeds, the model has some limitations that are important to mention, specially before adapting the model to the pulsatile case.
+
+Firstly, the model doesnot capture the actual shape of slugs in steady pipe flow. See in figure ... a comparison of slugs in full DNS and on the model. The model overestimates the amplitude of $q$ in the core of the slug. In the case of the DNS there is a clear difference between the turbulence magnitude in the upstream front and on the core. This was already noted by Barkley CITE. This is not critical for the behaviour of the slugs in the model, when compared with the behaviour in DNS. It causes qualitative differences when comparing the results from DNS and the model. 
+
+Secondly, the model doesnot capture the whole non-linear dynamics of puffs and slugs in pipe flow. Even after adding the stochastic term, the model doesnot return the same exponential scaling of puffs lifetimes and splitting probabilities. This means that even the original model is not able to capture the full spectra of dynamics in the steady case. One possible solution could be to better define the parameter $\sigma$ or the noise term $\gamma$. For starters, the parameter $\sigma$ could scale up with $Re$ since higher Reynolds number means more intense chaotic dynamics.
 
 
 
