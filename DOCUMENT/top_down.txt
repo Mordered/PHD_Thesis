@@ -21,20 +21,23 @@
 % 4.NUMERICAL METHODS 2 DNS: (Carlos thesis) + Appendices GPU
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 5.PIPE FLOW MODEL: Explain it + Numerical methods (APPENDIX?)
+% 5.PIPE FLOW MODEL: Explain it (APPENDIX?)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 6.TRANSITION MECHANISMS IN PULSATILE PIPE FLOW (wvfm)
+  Steady pipe flow
+  Helical instability
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 7.TURBULENCE IN THE TRANSITION REGIME 
-       (Barkley + Entropy + wvfm + FOR)
+  Use the results of (Barkley(only DNS) + Entropy + wvfm + FOR)
+  Concept of Pull-Back Attractor  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 8.MODEL OF PULSATILE PIPE FLOW IN THE TRANSITION REGIME
+% 8.CAUSAL ANALYSIS OF TURBULENCE IN PULSATILE PIPE FLOW
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 9. ?
+% 9.MODEL OF PUFFS ANS SLUGS IN PULSATILE PIPE FLOW
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 10.CONCLUSION
@@ -47,3 +50,5 @@
 % AP2: DESCRIPTION AND USER GUIDE OF GPU CODE
 
 % AP3: DNS + GRID
+
+% AP4: BARKLEY GPU?
