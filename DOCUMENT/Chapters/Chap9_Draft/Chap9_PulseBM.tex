@@ -1,0 +1,113 @@
+\documentclass{article}
+
+% PACKAGES
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+% Title
+\title{CHAPTER 9: Model for puffs and slugs in pulsatile pipe flow}
+\date{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Introduction: 
+% - Motivation to develop an extension of the model: 
+%   · We observe puffs and slugs in pulsatile pipe flow...
+%   · Pulsatile pipe flow influenced by many features...
+% - We first explain the extension of the model 
+% - We show some results of the model, compared with DNS, justify model decisions
+% - We talk about limitations and future prospects
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section: the model
+% - We justify the changes... (include maybe results without those changes?)
+% - We follow the description of the BM in chap 5
+
+
+% Local dynamics of the mean shear:
+% - First the time dependence... U(t), Uc(t)
+% - Second the effect of pressure gradient and viscosity (By equilibrium of forces...)-> validate with Laminar calculations!
+\subsection{Local dynamics of the mean shear}
+\begin{align}
+\dot{u}=g\left(q,u\right)= \epsilon_{1} \left(U_{c}-u \right) + \epsilon_{2} \left(U-u \right)q \text{,}
+\label{eq:loc_u}
+\end{align}
+
+
+% Local dynamics of turbulence intensity
+% - First the time dependence: r!, U_c...
+% - Second the effect of the inflection point: laminar profile is far from the parabolic profile. At intermediate amplitudes it is okay, but it doesnot seem so at higher amplitudes-
+% - We opt for directly the inflection point ...
+\subsection{Local dynamics of turbulence intensity}
+\begin{align}
+\dot{q}=f\left(q,u\right)=q \left[r+u-U_{c}-\left(r+\delta \right) \left(q -1 \right)^{2} \right]\text{.}
+\label{eq:loc_q}
+\end{align}
+
+
+% Spatially extended model: 
+% - just comment on the advection term of q...
+% - Talk about the importance of the noise term. How do we scale it with Re...
+\subsection{Spatially extended and stochastic model}
+\begin{align}
+\frac{\partial q}{\partial t}=-\left(u-\eta \right)\frac{\partial q}{\partial x} + f\left(q,u \right) + D\frac{\partial^{2} q}{\partial x^{2}} + \sigma \tau \left(t,x\right) q \text{,}
+\label{eq:SPDE_q}
+\end{align}
+
+\begin{align}
+\frac{\partial u}{\partial t}=-u\frac{\partial u}{\partial x} + g\left(q,u \right) + \frac{2}{Re}\frac{\partial^{2} u}{\partial x^{2}} \text{,}
+\label{eq:PDE_u}
+\end{align}
+
+
+%\subsection{Numerical method}
+%We integrate equations \ref{eq:SPDE_q} and \ref{eq:PDE_u} following \cite{barkley2015rise}. We discretise the second order derivatives with central finite differences of second order, and the first order derivatives with a first order upwind scheme. We integrate the system using an explicit Euler method, with a time step size $\Delta t=0.0025 D/U$. We consider a pipe of length $L=100D$ and a uniform grid spacing $\Delta x=0.5D$. The stochastic term is modeled as white gaussian noise in space and time. In figure ... we show a grid convergence study of our code.
+
+%Later, and as part of this thesis a GPU version of the code was developed. The variables $q$ and $u$ are expanded in a trunceted Fourier mode series. The derivatives are then computed using Fourier. Two different integrators where considered, a two-step Adams Bashforth and a Runge Kutta of order 4. The details of the code can be found ¿? in appendix C?
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Results using the model
+% - Parameter fitting and data base of comparison (why R0, eta)
+% - Phase average comparison of model and DNS
+% - Effect of ignoring new parameter... 
+% - Effect of constant noise term...
+% - Lessons learned from the model
+\section{Results of the extended model}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION: Limitiations of my model
+%   - Shape of the puff! (downstream front speed)
+%   - Importance of noise + gamma parameter (some dynamics are not represented well enough)
+%   - Over/underestimating lifetimes. 
+\section{Limitations of the extended model}
+
+
+
+
+
+
+
+
+% BIBLIOGRAPHY
+\bibliographystyle{alpha}
+\bibliography{sample}
+\end{document}
+
+
+
+% NEEDED MEDIA:
+
+
+% NEEDED CITATIONS:

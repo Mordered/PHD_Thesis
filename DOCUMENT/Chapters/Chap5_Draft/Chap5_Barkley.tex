@@ -15,6 +15,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduction: 
 % - Explain in two lines what the model does.
 % - We show the model and we discuss how we interpret it.
@@ -25,7 +26,7 @@ The model proposed by Barkley \cite{barkley2011modeling} (BM) is able to reprodu
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Main idea and definition:
 \section{Definition of the BM}
 % - Main idea of the model: three steps
@@ -136,7 +137,7 @@ Equations \ref{eq:SPDE_q} and \ref{eq:PDE_u} together with \ref{eq:loc_q} and \r
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Results using the model
 \section{Results of the model}
 By fitting the model parameters, see table ..., the BM can perfectly reproduce the front speeds of puffs and slugs for a huge number of $Re$. The front speeds measure the velocity at which the puffs and slugs are advected or elongate in pipe flow. In the case of the puff the upstream $c_{u}$ and downstream velocity $c_{d}$ are equal, while for the case of the slug $c_{d}>c_{u}$. The case of a strong slug also satisfies $c_{d}\approx 2U-c_{u}$. Recent results suggest that the model gives a perfect estimation of $c_{u}$ and $c_{d}$ at $Re$ as high as ... CITE. With the inclusion of the stochastic term the model also approximates the lifetimes of puffs and slugs. In this section we show the robustness of the model to parameter changes, and comment on limitations of the model that, as we will show later, are critical for the correct extension of the model to pulsatile pipe flow. 
@@ -147,11 +148,11 @@ In its original paper, Barkley shows the robustness of his model after changing 
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % - Limitiations of the original model 
 %   - Shape of the puff! (downstream front speed)
 %   - Lifetimes (shape) and the importance of non-linearities
-\subsection{Limitations of the model}
+\section{Limitations of the model}
 Despite being able to perfectly capture puffs and slugs front speeds, the model has some limitations that are important to mention, specially before adapting the model to the pulsatile case.
 
 Firstly, the model doesnot capture the actual shape of slugs in steady pipe flow. See in figure ... a comparison of slugs in full DNS and on the model. The model overestimates the amplitude of $q$ in the core of the slug. In the case of the DNS there is a clear difference between the turbulence magnitude in the upstream front and on the core. This was already noted by Barkley CITE. This is not critical for the behaviour of the slugs in the model, when compared with the behaviour in DNS. It causes qualitative differences when comparing the results from DNS and the model. 
@@ -164,7 +165,7 @@ Secondly, the model doesnot capture the whole non-linear dynamics of puffs and s
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BIBLIOGRAPHY
 \bibliographystyle{alpha}
 \bibliography{sample}
