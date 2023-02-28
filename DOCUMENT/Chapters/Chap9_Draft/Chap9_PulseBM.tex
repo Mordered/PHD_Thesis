@@ -3,9 +3,14 @@
 % PACKAGES
 \usepackage[english]{babel}
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
-\usepackage{amsmath}
+\usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+% Dani packages
+\usepackage{xcolor}
+\usepackage{xspace}
+%\newcommand{\note}[1]{{\color{red} \textbf{#1}}}
+\DeclareRobustCommand{\dm}[1]{{\color{blue}(\textbf{Dani}: \textit{#1}\xspace)}}
 
 % Title
 \title{CHAPTER 9: Model for puffs and slugs in pulsatile pipe flow}
@@ -23,13 +28,25 @@
 % - We first explain the extension of the model 
 % - We show some results of the model, compared with DNS, justify model decisions
 % - We talk about limitations and future prospects
+Turbulence in pulsatile pipe flow first appears in the form of localized turbulent patches. These patches are similar to the puffs and slugs observed in steady pipe flow \dm{Esta informacion estara en otros capitulos, secciones. Citalos aqui.}. Depending on the flow parameters, puffs and slugs show different behaviours. At low $Wo \lesssim 4$ they behave quasisteadily and are solely affected by the instantaneous Reynolds number $Re_{i}= U\left( t \right) Re$. When $Re_{i} \lesssim 2000$ they tend to quickly decay, whereas when $Re_{i} \gtrsim 2300$ they tend to elongate and grow in magnitude. At high pulsation frequencies $Wo \gtrsim 20$ they are unaffected by the pulsation and depend only on the mean $Re$, as in steady pipe flow \dm{Cita Xu Avila 2017 2018}. In the intermediate regime $5 \lesssim Wo \lesssim 17$ puffs are modulated by the pulsation. In this intermediate regime, the front speed and survival of puffs depends on the combination of $Re$, $Wo$ and $A$. Moreover at these pulsation frequencies, and at $A\gtrsim 0.5$ our results suggest that puffs take advantage of the instantanous linear instability of the laminar profile to survive \dm{Cita Entropy, capitulos, secciones y eventualmente un paper del modelo de Barkley}.
+
+In this chapter we adapt the BM of steady pipe flow \dm{Cita el capitulo o sección} to pulsatile pipe flow. The motivation to develop a simple model for puffs and slugs in pulsatile pipe flow is two-fold.
+
+On the one hand, we would like to have a tool that, in an efficient way, can perform simulations of turbulence in a huge parameteric regime of pulsatile pipe flow. We have mentioned how the behaviour of puffs and slugs can dramatically change, when changing one of the flow parameters. A simple model could approximate the puffs survival or front speed changes when changing the parameters in a fast way. It could be eventually used to develop control laws of puffs and slugs in pulsatile pipe flow.
+
+On the other hand, a simple model could help us understand the dynamics behind puffs and slugs in pulsatile pipe flow. At either very low or very large frequencies the behaviour of puffs and slugs are almost identical to the case of steady pipe flow. In the former, puffs and slugs adjust to the instantaneous mean shear, while on the latter to the time averaged mean shear. As seen in \dm{Citar capitulo (seccion) del modelo de Barkley}, in the case of steady pipe flow, the dynamics of puffs and slugs are mainly determined by the non-linear interaction between the mean shear and the turbulence intensity. Thus it is safe to assume that slight changes to the original BM, that include the changes on the mean shear due to the pulsation, can approximate well the behaviours of puffs and slugs in these frequencie regimes. At intermediate frequencies the behaviour of puffs and slugs is more complex. They are elongated and modulated by the pulsation, and, according to our results, they make use of other dynamics, apart from the state of the mean shear, to survive. It is thus worth it to try modify the model, and study which dynamics should be included in order to model puffs at these frequencies. 
+
+The rest of the chapter is organized as follows. First we describe our proposed changes and extensions to the original model of Barkley, to adapt it to pulsatile pipe flow. We provide some justification to the changes, together with examples of other design options. Second, we present the results of the extended model alone and compared with results of individual DNS of pulsatile pipe flow. We finally comment on the limitations of the model. 
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Section: the model
+% - Phylosophy
 % - We justify the changes... (include maybe results without those changes?)
 % - We follow the description of the BM in chap 5
-
+\section{The BM for pulsatile pipe flow}
+In this section we describe the modifications we propose in order to extend the BM to pulsatile pipe flow, or as we call it the extended BM (EBM). As we did in \dm{chapter 5, section ?} with the BM, we describe the EBM from its local to its spatially extended dynamics. As we show below the resultant (EBM) returns to the original BM when either $Wo=0$, $Wo=\infty$ or $A=0$. 
 
 % Local dynamics of the mean shear:
 % - First the time dependence... U(t), Uc(t)
@@ -111,3 +128,4 @@
 
 
 % NEEDED CITATIONS:
+% Effect of pulsation Xu (2017?)

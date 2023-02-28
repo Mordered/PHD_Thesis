@@ -6,6 +6,11 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+% Dani packages
+\usepackage{xcolor}
+\usepackage{xspace}
+%\newcommand{\note}[1]{{\color{red} \textbf{#1}}}
+\DeclareRobustCommand{\dm}[1]{{\color{blue}(\textbf{Dani}: \textit{#1}\xspace)}}
 
 % Title
 \title{CHAPTER 5: Model for puffs and slugs in steady pipe flow}
@@ -20,8 +25,8 @@
 % - Explain in two lines what the model does.
 % - We show the model and we discuss how we interpret it.
 % - We finally show the effect some parameters have in the model.
-The model proposed by Barkley \cite{barkley2011modeling} (BM) is able to reproduce the behaviour of turbulent puffs and slugs in steady pipe flow. It considers only two one dimensional time dependent variables whose evolution is described by non-linearly coupled advection-diffusion-reaction partial differential equations. In this chapter we describe the model, we summarize the main ideas behind it and how we interpret them. We finally discuss the results of the model for steady pipe flow and the effect of its parameters, together with some limitations. 
-% We use this description in chapter 8, when we describe an adapted version of the model for pulsatile pipe flow.
+The model proposed by Barkley \cite{barkley2011modeling} (BM) is able to reproduce the behaviour of turbulent puffs and slugs in steady pipe flow. It considers only two one dimensional time dependent variables whose evolution is described by non-linearly coupled advection-diffusion-reaction partial differential equations. In this chapter we describe the model, we summarize the main ideas behind it and how we interpret them. We finally discuss the results of the model for steady pipe flow and the effect of its parameters, together with some limitations. \dm{La idea aqui es referenciar el capitulo (ahora 9) donde describo la extension a pulsatil.}
+% We use this description in chapter 9, when we describe an adapted version of the model for pulsatile pipe flow.
 
 
 
@@ -158,8 +163,6 @@ Despite being able to perfectly capture puffs and slugs front speeds, the model 
 Firstly, the model doesnot capture the actual shape of slugs in steady pipe flow. See in figure ... a comparison of slugs in full DNS and on the model. The model overestimates the amplitude of $q$ in the core of the slug. In the case of the DNS there is a clear difference between the turbulence magnitude in the upstream front and on the core. This was already noted by Barkley CITE. This is not critical for the behaviour of the slugs in the model, when compared with the behaviour in DNS. It causes qualitative differences when comparing the results from DNS and the model. 
 
 Secondly, the model doesnot capture the whole non-linear dynamics of puffs and slugs in pipe flow. Even after adding the stochastic term, the model doesnot return the same exponential scaling of puffs lifetimes and splitting probabilities. This means that even the original model is not able to capture the full spectra of dynamics in the steady case. One possible solution could be to better define the parameter $\sigma$ or the noise term $\gamma$. For starters, the parameter $\sigma$ could scale up with $Re$ since higher Reynolds number means more intense chaotic dynamics.
-
-
 
 
 
