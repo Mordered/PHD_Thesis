@@ -52,3 +52,6 @@
 % AP3: DNS + GRID
 
 % AP4: BARKLEY GPU?
+
+% AP5: Catalogue of laminar pulsatile pipe flows: copy fig 4 of
+       the waveform paper, include the profile and the lambda..

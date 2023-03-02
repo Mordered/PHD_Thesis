@@ -36,7 +36,7 @@ On the one hand, we would like to have a tool that, in an efficient way, can per
 
 On the other hand, a simple model could help us understand the dynamics behind puffs and slugs in pulsatile pipe flow. At either very low or very large frequencies the behaviour of puffs and slugs are almost identical to the case of steady pipe flow. In the former, puffs and slugs adjust to the instantaneous mean shear, while on the latter to the time averaged mean shear. As seen in \dm{Citar capitulo (seccion) del modelo de Barkley}, in the case of steady pipe flow, the dynamics of puffs and slugs are mainly determined by the non-linear interaction between the mean shear and the turbulence intensity. Thus it is safe to assume that slight changes to the original BM, that include the changes on the mean shear due to the pulsation, can approximate well the behaviours of puffs and slugs in these frequencie regimes. At intermediate frequencies the behaviour of puffs and slugs is more complex. They are elongated and modulated by the pulsation, and, according to our results, they make use of other dynamics, apart from the state of the mean shear, to survive. It is thus worth it to try modify the model, and study which dynamics should be included in order to model puffs at these frequencies. 
 
-The rest of the chapter is organized as follows. First we describe our proposed changes and extensions to the original model of Barkley, to adapt it to pulsatile pipe flow. We provide some justification to the changes, together with examples of other design options. Second, we present the results of the extended model alone and compared with results of individual DNS of pulsatile pipe flow. We finally comment on the limitations of the model. 
+The rest of the chapter is organized as follows. First we describe our proposed changes and extensions to the original model of Barkley, to adapt it to pulsatile pipe flow. We provide some justification to the changes, together with examples of other design options. Second, we present the results of the extended Barkley model (EBM) alone and compared with results of individual DNS of pulsatile pipe flow. We finally comment on the limitations of the model. 
 
 
 
@@ -45,17 +45,54 @@ The rest of the chapter is organized as follows. First we describe our proposed 
 % - Phylosophy
 % - We justify the changes... (include maybe results without those changes?)
 % - We follow the description of the BM in chap 5
-\section{The BM for pulsatile pipe flow}
-In this section we describe the modifications we propose in order to extend the BM to pulsatile pipe flow, or as we call it the extended BM (EBM). As we did in \dm{chapter 5, section ?} with the BM, we describe the EBM from its local to its spatially extended dynamics. As we show below the resultant (EBM) returns to the original BM when either $Wo=0$, $Wo=\infty$ or $A=0$. 
+\section{Extension to the BM for pulsatile pipe flow}
+In this section we describe the modifications we propose in order to extend the BM to pulsatile pipe flow. The core idea of the extended Barkley model (EBM) is the same idea behind the original BM: the non-linear interaction between the turbulence intensity $q$ and the mean shear $u$. As in the BM, in the EBM $u$ corresponds to the centerline velocity, as a proxy to the  mean shear. The instantaneous laminar profile of pulsatile pipe flow can be much complex than a simple parabolic profile \dm{Aqui quizas sería interesante citar un posible apendice donde incluya un catalogo de perfiles laminares de flujos pulsatiles, una ristra de plots parecidos a la figura 4 del paper de waveforms. En el caso del paper podría citar algun paper (el de Womersley?)}, and therefore the shape of the shear can not be described by a single parameter like in steady pipe flow. We here assume that at relatively small pulsation amplitudes $A \lesssim 0.5$, the centerline velocity still represents a good approximation to the state of the mean shear. We further assume that the state of the mean shear at higher amplitudes $A \gtrsim 0.5$, can be approximated with a parameter inspired by the physics of pulsatile pipe flow, without the need of an additional model variable. 
+
+Our modifications have a constraint and fulfil a requireement. The EBM is constrained to pulsatile pipe flows with $\bar{U}\left( t \right) \geq 0$. As we show below the resultant EBM returns to the original BM when either $Wo=0$, $Wo=\infty$ or $A=0$. As we did in \dm{chapter 5, (section ?)} with the BM, in the rest of the chapter we describe the EBM from its local to its spatially extended dynamics.
+
+
+
+
 
 % Local dynamics of the mean shear:
-% - First the time dependence... U(t), Uc(t)
+% - First the time dependence... \bar{U}(t), Uc(t)
 % - Second the effect of pressure gradient and viscosity (By equilibrium of forces...)-> validate with Laminar calculations!
 \subsection{Local dynamics of the mean shear}
+The first obvious change to equation \dm{cita la equacion locu del capitulo 5, o de la otra sección en el caso del paper}, the local dynamics of $u$, is to consider that in pulsatile pipe flow, the laminar centerline velocity and bulk velocity are now functions of time, $U_{c} \left(t \right)$ and $\bar{U} \left( t \right)$. While the bulk velocity is set by the pulsation, the centerline velocity can be obtained by taking the NSE for the case of laminar pipe flow, $\pmb{u}\left(r,\theta,x,t\right)\rightarrow\left(0,0,U\left(r,t\right) \right)$:
+\begin{align}
+\frac{\partial U}{\partial t}= Gp\left(t\right) + F_{visc}\left(r,t\right) \text{,}
+\end{align}
+and setting $r \rightarrow 0$. Here,
+\begin{align}
+Gp\left(t\right)=- \frac{\mathrm{d} P}{\mathrm{d} x} \left(t \right) \text{,}
+\end{align}
+is the pressure gradient that drives the flow at the desired $\bar{U} \left( t \right)$, and:
+\begin{align}
+F_{visc}\left(r,t\right)= \frac{1}{Re} \left( \frac{\partial^{2}U}{\partial r^{2}} + \frac{1}{r} \frac{\partial U}{\partial r} \right) \text{.}
+\end{align}
+When $r \rightarrow 0$,
+\begin{align}
+F_{v_{0}} \left(t \right)=\lim_{r \to 0} F_{visc} = \lim_{r \to 0} \left[ \frac{1}{Re} \left( \frac{\partial^{2}U}{\partial r^{2}} + \frac{1}{r} \frac{\partial U}{\partial r} \right) \right] \text{.}
+\label{eq:limFvisc}
+\end{align}
+If one applies L'Hopital's rule to the last term of equation~\ref{eq:limFvisc},
+\begin{align}
+F_{v_{0}} =  \frac{2}{Re} \frac{\partial^{2}U}{\partial r^{2}} \text{,}
+\end{align}
+and, for $U_{c}\left(t\right)=U\left(t,r=0\right)$,
+\begin{align}
+\frac{\partial U_{c}}{\partial t}=Gp\left(t\right) + F_{v_{0}}\left(t\right) \text{.}
+\label{eq:centerline}
+\end{align}
+
+
 \begin{align}
 \dot{u}=g\left(q,u\right)= \epsilon_{1} \left(U_{c}-u \right) + \epsilon_{2} \left(U-u \right)q \text{,}
 \label{eq:loc_u}
 \end{align}
+
+
+
 
 
 % Local dynamics of turbulence intensity
@@ -67,6 +104,9 @@ In this section we describe the modifications we propose in order to extend the 
 \dot{q}=f\left(q,u\right)=q \left[r+u-U_{c}-\left(r+\delta \right) \left(q -1 \right)^{2} \right]\text{.}
 \label{eq:loc_q}
 \end{align}
+
+
+
 
 
 % Spatially extended model: 
@@ -84,10 +124,14 @@ In this section we describe the modifications we propose in order to extend the 
 \end{align}
 
 
+
+
 %\subsection{Numerical method}
 %We integrate equations \ref{eq:SPDE_q} and \ref{eq:PDE_u} following \cite{barkley2015rise}. We discretise the second order derivatives with central finite differences of second order, and the first order derivatives with a first order upwind scheme. We integrate the system using an explicit Euler method, with a time step size $\Delta t=0.0025 D/U$. We consider a pipe of length $L=100D$ and a uniform grid spacing $\Delta x=0.5D$. The stochastic term is modeled as white gaussian noise in space and time. In figure ... we show a grid convergence study of our code.
 
 %Later, and as part of this thesis a GPU version of the code was developed. The variables $q$ and $u$ are expanded in a trunceted Fourier mode series. The derivatives are then computed using Fourier. Two different integrators where considered, a two-step Adams Bashforth and a Runge Kutta of order 4. The details of the code can be found ¿? in appendix C?
+
+
 
 
 
@@ -103,11 +147,15 @@ In this section we describe the modifications we propose in order to extend the 
 
 
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION: Limitiations of my model
+%   - Shape of the pulsation
 %   - Shape of the puff! (downstream front speed)
 %   - Importance of noise + gamma parameter (some dynamics are not represented well enough)
 %   - Over/underestimating lifetimes. 
+%   - Turbulence decay?
 \section{Limitations of the extended model}
 
 

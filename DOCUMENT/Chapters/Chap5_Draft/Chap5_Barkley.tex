@@ -35,7 +35,7 @@ The model proposed by Barkley \cite{barkley2011modeling} (BM) is able to reprodu
 % Main idea and definition:
 \section{Definition of the BM}
 % - Main idea of the model: three steps
-The BM considers the variables $q\left(x,t\right)$ and $u\left(x,t\right)$. Here $q$ represents the turbulence intensity and $u$ the state of the mean shear at time $t$ and on each axial location $x$ of the pipe. As a proxy to the mean shear, Barkley considers the centerline velocity of the pipe. When the centerline velocity is maximum at $u=U_{c}$ the flow is locally laminar as the centerline velocity of the parabolic profile is recovered. Otherwise, when the flow is locally disturbed, the centerline velocity is $u < U_{c}$. The turbulence intensity $q$ is always either $q=0$, which models the case of no turbulence or laminar flow, or $q>0$. 
+The BM considers the variables $q\left(x,t\right)$ and $u\left(x,t\right)$. Here $q$ represents the turbulence intensity and $u$ the state of the mean shear at time $t$ and on each axial location $x$ of the pipe. As a proxy to the mean shear, Barkley considers the centerline velocity of the pipe. Note that, in the case of steady pipe flow, the laminar profile is parabolic and its shear can be described with a single parameter. Therefore the centerline velocity, or the velocity at any radial position for that matter, is a good indicator of the state of the mean shear. When the centerline velocity is maximum, $u=U_{c}$, the flow is locally laminar as the value of the parabolic profile $U_{c}$ is recovered. Otherwise, when the flow is locally disturbed, the centerline velocity is $u < U_{c}$. The turbulence intensity $q$ is always either $q=0$, which models the case of no turbulence or laminar flow, or $q>0$. 
 
 The main idea of the BM is the non-linear interaction between $u$ and $q$: the turbulence intensity $q$ takes advantage of the mean shear $u$ to grow, but the mean shear decreases when $q>0$. These dynamics are local in $x$, and can be modeled with a pair of non-linearly coupled ordinary differential equations. On top of this local interaction the model includes advection-diffusion and stochastic effects that, as we show below, are needed in order to describe the dynamics of puffs and slugs in statistically steady pipe flow. 
 
@@ -67,18 +67,19 @@ A similar equation to eq~\ref{eq:loc_q_0}, was first proposed by Landau CITE, to
 
 %   · Mean shear 
 \subsection{Local dynamics of the mean shear}
-The variable $u$ corresponds to the centerline velocity of the pipe flow, as a proxy of the state of the local mean shear. When the mean shear is not disturbed, $u$ is maximum and equal to the centerline velocity of the laminar (parabolic) profile $u=U_{c}$. When the mean shear is disturbed, $u<U_{c}$. The model assumes that the most disturbed mean shear possible corresponds to a plug like profile, where the centerline velocity equals the bulk velocity $u=U$. 
+The variable $u$ corresponds to the centerline velocity of the pipe flow, as a proxy of the state of the local mean shear. When the mean shear is not disturbed, $u$ is maximum and equal to the centerline velocity of the laminar (parabolic) profile $u=U_{c}$. When the mean shear is disturbed, $u<U_{c}$. The model assumes that the most disturbed mean shear possible corresponds to a plug like profile, where the centerline velocity equals the bulk velocity $u=\bar{U}$. 
 
 The ordinary differential equation that describes the evolution of $u$ is not derived from the Navier--Stokes equation. Instead it is modeled as:
 \begin{align}
-\dot{u}=g\left(q,u\right)= \epsilon_{1} \left(U_{c}-u \right) + \epsilon_{2} \left(U-u \right)q \text{,}
+\dot{u}=g\left(q,u\right)= \epsilon_{1} \left(U_{c}-u \right) + \epsilon_{2} \left(\bar{U}-u \right)q \text{,}
 \label{eq:loc_u}
 \end{align}
 
-where $\epsilon_{1}$ and $\epsilon_{2}$ are model parameters. The equation is described as follows. When the flow is locally laminar $q=0$, $u$ tends to the laminar profile centerline velocity $u \rightarrow 2$ at an exponential rate due to the first term in the right hand side of equation~\ref{eq:loc_u}. The slope of the exponential is given by the parameter $\epsilon_{1}$ that, according to Barkley, should be an inverse of the Reynolds number \cite{barkley2016}. When the flow is locally turbulent $q>0$ the centerline velocity decreases due to the second term in the RHS of equation~\ref{eq:loc_u}, with a lower bound at $u=1$. The parameter $\epsilon_{2}$ describes the effect the turbulence intensity has on the mean shear. 
+where $\epsilon_{1}$ and $\epsilon_{2}$ are model parameters. 
 
+Accroding to equation~\ref{eq:loc_u}, if the flow locally has no turbulence intensity $q=0$, and $u<U_{c}$, the centerline velocity increases until it reaches the centerline velocity $U_{c}$ of the laminar (parabolic) profile. The characteristic time of this relaminarization process is set by the model parameter $\epsilon_{1}$. According to Barkley, this parameter should be inversely proportional to the Reynolds number \cite{barkley2016}, but it is always set constant. 
 
-
+When the flow is locally turbulent $q>0$ the centerline velocity decreases due to the second term in the RHS of equation~\ref{eq:loc_u}, with a lower bound at $u=\bar{U}$. The parameter $\epsilon_{2}$ describes the effect the turbulence intensity has on the mean shear. 
 
 
 %   · Local interactions
