@@ -58,11 +58,11 @@ Our modifications have a constraint and fulfil a requireement. The EBM is constr
 % - First the time dependence... \bar{U}(t), Uc(t)
 % - Second the effect of pressure gradient and viscosity (By equilibrium of forces...)-> validate with Laminar calculations!
 \subsection{Local dynamics of the mean shear}
-The first obvious change to equation \dm{cita la equacion locu del capitulo 5, o de la otra sección en el caso del paper}, the local dynamics of $u$, is to consider that in pulsatile pipe flow, the laminar centerline velocity and bulk velocity are now functions of time, $U_{c} \left(t \right)$ and $\bar{U} \left( t \right)$. While the bulk velocity is set by the pulsation, the centerline velocity can be obtained by taking the NSE for the case of laminar pipe flow, $\pmb{u}\left(r,\theta,x,t\right)\rightarrow\left(0,0,U\left(r,t\right) \right)$:
+In pulsatile pipe flow, the laminar centerline velocity $U_{c} \left(t \right)$ and bulk velocity $\bar{U} \left( t \right)$ are functions of time. While the bulk velocity is set by the pulsation, the evolution of $U_{c}\left( t \right)$ can be obtained from the NSE. First we assume laminar pipe flow, $\pmb{u}\left(r,\theta,x,t\right)\rightarrow\left(0,0,U\left(r,t\right) \right)$:
 \begin{align}
 \frac{\partial U}{\partial t}= Gp\left(t\right) + F_{visc}\left(r,t\right) \text{,}
 \end{align}
-and setting $r \rightarrow 0$. Here,
+and secondly we set $r \rightarrow 0$. Here,
 \begin{align}
 Gp\left(t\right)=- \frac{\mathrm{d} P}{\mathrm{d} x} \left(t \right) \text{,}
 \end{align}
@@ -75,7 +75,7 @@ When $r \rightarrow 0$,
 F_{v_{0}} \left(t \right)=\lim_{r \to 0} F_{visc} = \lim_{r \to 0} \left[ \frac{1}{Re} \left( \frac{\partial^{2}U}{\partial r^{2}} + \frac{1}{r} \frac{\partial U}{\partial r} \right) \right] \text{.}
 \label{eq:limFvisc}
 \end{align}
-If one applies L'Hopital's rule to the last term of equation~\ref{eq:limFvisc},
+If one applies L'Hopital's rule to the limit in equation~\ref{eq:limFvisc},
 \begin{align}
 F_{v_{0}} =  \frac{2}{Re} \frac{\partial^{2}U}{\partial r^{2}} \text{,}
 \end{align}
@@ -84,12 +84,16 @@ and, for $U_{c}\left(t\right)=U\left(t,r=0\right)$,
 \frac{\partial U_{c}}{\partial t}=Gp\left(t\right) + F_{v_{0}}\left(t\right) \text{.}
 \label{eq:centerline}
 \end{align}
+Note that the time average of the right hand side of equation~\ref{eq:centerline} yields $\left \langle Gp\left(t\right) + F_{v_{0}}\left(t\right) \right \rangle=0$
 
-
+The equilibrium of forces described in equation~\ref{eq:centerline} must be included in the model since, when the flow is locally laminar $\left(q=0\right)$, $u\equiv U_{c}$. Thus the original equation \dm{Citar la ecuacion locu del capitulo 5 de la tesis, en el caso del paper de la seccion correspondiente}, is extended to:
 \begin{align}
-\dot{u}=g\left(q,u\right)= \epsilon_{1} \left(U_{c}-u \right) + \epsilon_{2} \left(U-u \right)q \text{,}
-\label{eq:loc_u}
+\dot{u}=g_{EBM}\left(q,u\right)= \epsilon_{1} \left(U_{c}\left(t\right)-u \right) + \epsilon_{2} \left(\bar{U}\left(t\right)-u \right)q + Gp\left(t\right) + F_{v_{0}}\left(t\right) \text{,}
+\label{eq:loc_u_EBM}
 \end{align}
+where $U_{c}$, $G_{p}$ and $F_{v_{0}}$ are the corresponding laminar centerline velocity, pressure gradient and the viscous force at the center of the pipe. They can be precomputed by numerically integrating equation~\ref{eq:centerline}.
+
+ 
 
 
 
@@ -97,9 +101,20 @@ and, for $U_{c}\left(t\right)=U\left(t,r=0\right)$,
 
 % Local dynamics of turbulence intensity
 % - First the time dependence: r!, U_c...
-% - Second the effect of the inflection point: laminar profile is far from the parabolic profile. At intermediate amplitudes it is okay, but it doesnot seem so at higher amplitudes-
+% - Second the effect of the inflection point
 % - We opt for directly the inflection point ...
 \subsection{Local dynamics of turbulence intensity}
+In the original BM, the control parameter $r$ sets the production of turbulence intensity. As we observe in our DNS \dm{Aqui puedes citar el paper de Entropy (en el caso del paper), o incluso resultados que puedes incluir de nueva cosecha en el paper(tengo calculada la produccion en cada posicion axial y phase averaged!). En el caso de la tesis cita resultados de probablemente el capitulo 7.} turbulent production is modulated by the pulsation. We model this feature by considering a time dependant $r_{EBM}\left( t \right)= r \left( Re \right) \cdot \bar{U}\left(t+\phi\right)$, where $r$ is calculated using the mean Reynolds $Re$, and $\bar{U}\left(t + \phi\right)$ is a time shifted bulk velocity. In our DNS we observe a time delay between the maximum integrated turbulence intensity $\left \langle q \right \rangle_{r,\theta,z}$ and the bulk velocity $\bar{U}$ \dm{Aquí añade una figura que demuestre esto. Quizas puedas coger todas las DNS y generar un plot donde se vea (a Re constante?) como cambia "phi" con Wo. Tambien puedes referenciar otro capitulo (seccion en el paper)}. We find that the phase lag $\phi \left(Wo\right)$ between the pressure gradient and laminar profile that it generates, first derived by Womersley \dm{Cita Womersley}, is a good approximation. Moreover, the phase lag is a sole function of the Womersley number, and it has an analytical expresion.
+
+As we show in \dm{Aqui deberas citar el capitulo 7 y 8, y la seccion correspondiente del paper, donde hables del inflection point y de sus effectos en las DNS}, at certain $5 \lesssim Wo \lesssim 17$ and $A\gtrsim 0.5$, the laminar profile of pulsatile pipe flow is very different to the parabolic profile of the steady case \dm{En el caso de la tesis citar el apendice con el catalogo de perfiles laminares}, and can even be instantaneously unstable. \dm{Citar capitulo 6, paper de waveforms en el paper.} The centerline velocity $u$ alone is not able to capture this features of the mean shear. Since in this case we have decided not to add any new variable to the model, the effect of the instantaneous shape and effects of the mean shear are modeled by adding to the local dynamics of $q$ in equation \dm{Cita la ecuacion locq en el capitulo q} the term $+ \gamma \lambda \left(t\right) q$. Here $\lambda \left(t\right)$ represents how linearly unstable the laminar profile is due to the presence of inflection points, and it is always $\lambda\geq 0$. It corresponds to the maximum eigenvalue of the instantaneous laminar profile, as we computed it in \dm{Cita el capitulo donde hables de la estabilidad lineal instantanea y el catalogo final de flujos pulsatiles con su lambda, y en el caso del paper cita el de waveforms y añade: We compute the eigenvalues of the laminar profile at certain time steps as if the profile was instantaneously steady. We then assume that the maximum eigenvalue is continuous in time and construct $\lambda \left(t \right)$}. The parameter $\gamma$ models the effect $\lambda$ has on the growth of $q$. It models how good the quasi-steady assumption when computing $\lambda$ is, and should scale up with the pulsation period in terms of advective time units $T=\frac{\pi Re}{2 Wo^{2}}$. We find a good compromise by setting
+\begin{align}
+\gamma = 0.23 \log \left(T\right) \text{.}
+\end{align}
+
+
+
+
+
 \begin{align}
 \dot{q}=f\left(q,u\right)=q \left[r+u-U_{c}-\left(r+\delta \right) \left(q -1 \right)^{2} \right]\text{.}
 \label{eq:loc_q}
@@ -114,12 +129,12 @@ and, for $U_{c}\left(t\right)=U\left(t,r=0\right)$,
 % - Talk about the importance of the noise term. How do we scale it with Re...
 \subsection{Spatially extended and stochastic model}
 \begin{align}
-\frac{\partial q}{\partial t}=-\left(u-\eta \right)\frac{\partial q}{\partial x} + f\left(q,u \right) + D\frac{\partial^{2} q}{\partial x^{2}} + \sigma \tau \left(t,x\right) q \text{,}
+\frac{\partial q}{\partial t}=-\left(u-\eta \right)\frac{\partial q}{\partial x} + f_{EBM}\left(q,u \right) + D\frac{\partial^{2} q}{\partial x^{2}} + \sigma \tau \left(t,x\right) q \text{,}
 \label{eq:SPDE_q}
 \end{align}
 
 \begin{align}
-\frac{\partial u}{\partial t}=-u\frac{\partial u}{\partial x} + g\left(q,u \right) + \frac{2}{Re}\frac{\partial^{2} u}{\partial x^{2}} \text{,}
+\frac{\partial u}{\partial t}=-u\frac{\partial u}{\partial x} + g_{EBM}\left(q,u \right) + \frac{2}{Re}\frac{\partial^{2} u}{\partial x^{2}} \text{,}
 \label{eq:PDE_u}
 \end{align}
 
@@ -173,6 +188,7 @@ and, for $U_{c}\left(t\right)=U\left(t,r=0\right)$,
 
 
 % NEEDED MEDIA:
+% - USING THE DNS the phase shift between qint/qmax y Wo, a Re constante? QUizas Re=2100...
 
 
 % NEEDED CITATIONS:
