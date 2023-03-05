@@ -30,7 +30,7 @@
 % - We talk about limitations and future prospects
 Turbulence in pulsatile pipe flow first appears in the form of localized turbulent patches. These patches are similar to the puffs and slugs observed in steady pipe flow \dm{Esta informacion estara en otros capitulos, secciones. Citalos aqui.}. Depending on the flow parameters, puffs and slugs show different behaviours. At low $Wo \lesssim 4$ they behave quasisteadily and are solely affected by the instantaneous Reynolds number $Re_{i}= U\left( t \right) Re$. When $Re_{i} \lesssim 2000$ they tend to quickly decay, whereas when $Re_{i} \gtrsim 2300$ they tend to elongate and grow in magnitude. At high pulsation frequencies $Wo \gtrsim 20$ they are unaffected by the pulsation and depend only on the mean $Re$, as in steady pipe flow \dm{Cita Xu Avila 2017 2018}. In the intermediate regime $5 \lesssim Wo \lesssim 17$ puffs are modulated by the pulsation. In this intermediate regime, the front speed and survival of puffs depends on the combination of $Re$, $Wo$ and $A$. Moreover at these pulsation frequencies, and at $A\gtrsim 0.5$ our results suggest that puffs take advantage of the instantanous linear instability of the laminar profile to survive \dm{Cita Entropy, capitulos, secciones y eventualmente un paper del modelo de Barkley}.
 
-In this chapter we adapt the BM of steady pipe flow \dm{Cita el capitulo o sección} to pulsatile pipe flow. The motivation to develop a simple model for puffs and slugs in pulsatile pipe flow is two-fold.
+In this chapter we adapt the BM of steady pipe flow \dm{Cita el capitulo o sección} to pulsatile pipe flow at $Wo \geq 4$. At lower $Wo$ puffs behave quasi-steadily, and we understand that there is no need to model their behaviour. The motivation to develop a simple model for puffs and slugs in pulsatile pipe flow is two-fold.
 
 On the one hand, we would like to have a tool that, in an efficient way, can perform simulations of turbulence in a huge parameteric regime of pulsatile pipe flow. We have mentioned how the behaviour of puffs and slugs can dramatically change, when changing one of the flow parameters. A simple model could approximate the puffs survival or front speed changes when changing the parameters in a fast way. It could be eventually used to develop control laws of puffs and slugs in pulsatile pipe flow.
 
@@ -48,7 +48,7 @@ The rest of the chapter is organized as follows. First we describe our proposed 
 \section{Extension to the BM for pulsatile pipe flow}
 In this section we describe the modifications we propose in order to extend the BM to pulsatile pipe flow. The core idea of the extended Barkley model (EBM) is the same idea behind the original BM: the non-linear interaction between the turbulence intensity $q$ and the mean shear $u$. As in the BM, in the EBM $u$ corresponds to the centerline velocity, as a proxy to the  mean shear. The instantaneous laminar profile of pulsatile pipe flow can be much complex than a simple parabolic profile \dm{Aqui quizas sería interesante citar un posible apendice donde incluya un catalogo de perfiles laminares de flujos pulsatiles, una ristra de plots parecidos a la figura 4 del paper de waveforms. En el caso del paper podría citar algun paper (el de Womersley?)}, and therefore the shape of the shear can not be described by a single parameter like in steady pipe flow. We here assume that at relatively small pulsation amplitudes $A \lesssim 0.5$, the centerline velocity still represents a good approximation to the state of the mean shear. We further assume that the state of the mean shear at higher amplitudes $A \gtrsim 0.5$, can be approximated with a parameter inspired by the physics of pulsatile pipe flow, without the need of an additional model variable. 
 
-Our modifications have a constraint and fulfil a requireement. The EBM is constrained to pulsatile pipe flows with $\bar{U}\left( t \right) \geq 0$. As we show below the resultant EBM returns to the original BM when either $Wo=0$, $Wo=\infty$ or $A=0$. As we did in \dm{chapter 5, (section ?)} with the BM, in the rest of the chapter we describe the EBM from its local to its spatially extended dynamics.
+Our modifications have a constraint and fulfil a requireement. The EBM is constrained to pulsatile pipe flows with $\bar{U}\left( t \right) \geq 0$. As we show below the resultant EBM returns to the original BM when either $Wo=0$ or $A=0$. As we did in \dm{chapter 5, (section ?)} with the BM, in the rest of the chapter we describe the EBM from its local to its spatially extended dynamics.
 
 
 
@@ -104,23 +104,19 @@ where $U_{c}$, $G_{p}$ and $F_{v_{0}}$ are the corresponding laminar centerline 
 % - Second the effect of the inflection point
 % - We opt for directly the inflection point ...
 \subsection{Local dynamics of turbulence intensity}
-In the original BM, the control parameter $r$ sets the production of turbulence intensity. As we observe in our DNS \dm{Aqui puedes citar el paper de Entropy (en el caso del paper), o incluso resultados que puedes incluir de nueva cosecha en el paper(tengo calculada la produccion en cada posicion axial y phase averaged!). En el caso de la tesis cita resultados de probablemente el capitulo 7.} turbulent production is modulated by the pulsation. We model this feature by considering a time dependant $r_{EBM}\left( t \right)= r \left( Re \right) \cdot \bar{U}\left(t+\phi\right)$, where $r$ is calculated using the mean Reynolds $Re$, and $\bar{U}\left(t + \phi\right)$ is a time shifted bulk velocity. In our DNS we observe a time delay between the maximum integrated turbulence intensity $\left \langle q \right \rangle_{r,\theta,z}$ and the bulk velocity $\bar{U}$ \dm{Aquí añade una figura que demuestre esto. Quizas puedas coger todas las DNS y generar un plot donde se vea (a Re constante?) como cambia "phi" con Wo. Tambien puedes referenciar otro capitulo (seccion en el paper)}. We find that the phase lag $\phi \left(Wo\right)$ between the pressure gradient and laminar profile that it generates, first derived by Womersley \dm{Cita Womersley}, is a good approximation. Moreover, the phase lag is a sole function of the Womersley number, and it has an analytical expresion.
+In the original BM, the control parameter $r$ sets the production of turbulence intensity. As we observe in our DNS \dm{Aqui puedes citar el paper de Entropy (en el caso del paper), o incluso resultados que puedes incluir de nueva cosecha en el paper(tengo calculada la produccion en cada posicion axial y phase averaged!). En el caso de la tesis cita resultados de probablemente el capitulo 7.} turbulent production is modulated by the pulsation. We model this feature by considering a time dependant $r_{EBM}\left( t \right)= r \left( Re \right) \cdot \bar{U}\left(t+\phi\right)$, where $r$ is constant, and it is calculated using the mean Reynolds $Re$, and $\bar{U}\left(t + \phi\right)$ is a time shifted bulk velocity. In our DNS we observe a time delay between the maximum integrated turbulence intensity $\left \langle q \right \rangle_{r,\theta,z}$ and the bulk velocity $\bar{U}$ \dm{Aquí añade una figura que demuestre esto. Quizas puedas coger todas las DNS y generar un plot donde se vea (a Re constante?) como cambia "phi" con Wo. Tambien puedes referenciar otro capitulo (seccion en el paper)}. We find that the phase lag $\phi \left(Wo\right)$ between the pressure gradient and laminar profile that it generates, first derived by Womersley \dm{Cita Womersley}, is a good approximation. Moreover, the phase lag is a sole function of the Womersley number, and it has an analytical expresion.
 
-As we show in \dm{Aqui deberas citar el capitulo 7 y 8, y la seccion correspondiente del paper, donde hables del inflection point y de sus effectos en las DNS}, at certain $5 \lesssim Wo \lesssim 17$ and $A\gtrsim 0.5$, the laminar profile of pulsatile pipe flow is very different to the parabolic profile of the steady case \dm{En el caso de la tesis citar el apendice con el catalogo de perfiles laminares}, and can even be instantaneously unstable. \dm{Citar capitulo 6, paper de waveforms en el paper.} The centerline velocity $u$ alone is not able to capture this features of the mean shear. Since in this case we have decided not to add any new variable to the model, the effect of the instantaneous shape and effects of the mean shear are modeled by adding to the local dynamics of $q$ in equation \dm{Cita la ecuacion locq en el capitulo q} the term $+ \gamma \lambda \left(t\right) q$. Here $\lambda \left(t\right)$ represents how linearly unstable the laminar profile is due to the presence of inflection points, and it is always $\lambda\geq 0$. It corresponds to the maximum eigenvalue of the instantaneous laminar profile, as we computed it in \dm{Cita el capitulo donde hables de la estabilidad lineal instantanea y el catalogo final de flujos pulsatiles con su lambda, y en el caso del paper cita el de waveforms y añade: We compute the eigenvalues of the laminar profile at certain time steps as if the profile was instantaneously steady. We then assume that the maximum eigenvalue is continuous in time and construct $\lambda \left(t \right)$}. The parameter $\gamma$ models the effect $\lambda$ has on the growth of $q$. It models how good the quasi-steady assumption when computing $\lambda$ is, and should scale up with the pulsation period in terms of advective time units $T=\frac{\pi Re}{2 Wo^{2}}$. We find a good compromise by setting
+As we show in \dm{Aqui deberas citar el capitulo 7 y 8, y la seccion correspondiente del paper, donde hables del inflection point y de sus effectos en las DNS}, at certain $5 \lesssim Wo \lesssim 17$ and $A\gtrsim 0.5$, the laminar profile of pulsatile pipe flow is very different to the parabolic profile of the steady case \dm{En el caso de la tesis citar el apendice con el catalogo de perfiles laminares}, and can even be instantaneously unstable. \dm{Citar capitulo 6, paper de waveforms en el paper.} The centerline velocity $u$ alone is not able to capture this features of the mean shear. Since in this case we have decided not to add any new variable to the model, the effect of the instantaneous shape and effects of the mean shear are modeled by adding to the local dynamics of $q$ in equation \dm{Cita la ecuacion locq en el capitulo q} the term $+ \gamma \lambda \left(t\right) q$. Here $\lambda \left(t\right)$ represents how linearly unstable the laminar profile is due to the presence of inflection points, and it is always $\lambda\geq 0$. It corresponds to the maximum eigenvalue of the instantaneous laminar profile, as we computed it in \dm{Cita el capitulo donde hables de la estabilidad lineal instantanea y el catalogo final de flujos pulsatiles con su lambda, y en el caso del paper cita el de waveforms y añade: We compute the eigenvalues of the laminar profile at certain time steps as if the profile was instantaneously steady. We then assume that the maximum eigenvalue is continuous in time and construct $\lambda \left(t \right)$}. The parameter $\gamma$ models the effect $\lambda$ has on the growth of $q$. It represents the accuracy of the quasi-steady assumption used to compute $\lambda$. In theory it should scale with the length of the period in terms of flow units $T=\frac{\pi Re}{2 Wo^{2}}$. The idea is that, the longer the period is, the slower the mean shear evolves with respect to the turbulent structures. We find a good compromise with:
 \begin{align}
 \gamma = 0.23 \log \left(T\right) \text{.}
+\label{eq:gamma_EBM}
 \end{align}
 
-
-
-
-
+By introducing these changes to the model, the local dynamics of $q$ in the EBM are described by the following ODE:
 \begin{align}
-\dot{q}=f\left(q,u\right)=q \left[r+u-U_{c}-\left(r+\delta \right) \left(q -1 \right)^{2} \right]\text{.}
-\label{eq:loc_q}
+\dot{q}=f_EBM}\left(q,u\right)=q \left[r\bar{U}\left(t+\phi\right)+\gamma \lambda + u-U_{c}\left(t\right)-\left(r\bar{U}\left(t+\phi\right)+\delta \right) \left(q -1 \right)^{2} \right]\text{.}
+\label{eq:loc_q_EBM}
 \end{align}
-
-
 
 
 
@@ -128,21 +124,42 @@ As we show in \dm{Aqui deberas citar el capitulo 7 y 8, y la seccion correspondi
 % - just comment on the advection term of q...
 % - Talk about the importance of the noise term. How do we scale it with Re...
 \subsection{Spatially extended and stochastic model}
+As for the original BM, the local dynamics alone are not able to describe the behavior of localized turbulence in pulsatile pipe flow. One needs to also consider advection, diffusion and stochstic effects. In the case of the centerline velocity the spatially extended equation is equal to equation \dm{Cita Capitulo 5 eqPDEu}:
 \begin{align}
-\frac{\partial q}{\partial t}=-\left(u-\eta \right)\frac{\partial q}{\partial x} + f_{EBM}\left(q,u \right) + D\frac{\partial^{2} q}{\partial x^{2}} + \sigma \tau \left(t,x\right) q \text{,}
-\label{eq:SPDE_q}
+\frac{\partial u}{\partial t}=-u\frac{\partial u}{\partial x} + g_{EBM}\left(q,u \right) + \frac{2}{Re}\frac{\partial^{2} u}{\partial x^{2}} \text{.}
+\label{eq:PDE_u_EBM}
 \end{align}
 
+In the original BM \dm{CITA Cap 5} the velocity at which $q$ is advected is equal to $u-\eta$ where $\eta$ acts as a correction parameter. In the case of pulsatile pipe flow, the advection velocity should also depend on the pulsation. We model this by correcting the velocity by $u-\eta \bar{U}$ instead of simply $u-\eta$:
 \begin{align}
-\frac{\partial u}{\partial t}=-u\frac{\partial u}{\partial x} + g_{EBM}\left(q,u \right) + \frac{2}{Re}\frac{\partial^{2} u}{\partial x^{2}} \text{,}
-\label{eq:PDE_u}
+\frac{\partial q}{\partial t}=-\left(u-\eta \bar{U} \right)\frac{\partial q}{\partial x} + f_{EBM}\left(q,u \right) + D\frac{\partial^{2} q}{\partial x^{2}} + \sigma \left(Re \right) \tau \left(t,x\right) q \text{,}
+\label{eq:SPDE_q_EBM}
 \end{align}
+Note that, in the EBM $\sigma$ depends on the $Re$. While fitting the model to our DNS results, we noticed how, at certain parameters the magnitude of the noise was critical in order to validate the front speed and lifetimes of the puffs. Wo found that a noise intensity that scales linearly with $Re$, with an upper bound of $\sigma \leq 0.9$:
+\begin{align}
+\sigma= \left\{\begin{matrix}
+0.1 & if & Re \leq 2020\\ 
+\frac{3}{5}\cdot \frac{\left(Re-1933 \right )}{1000} & if & 2020<Re<2640\\ 
+ 0.85 & if & Re\geq 2640
+\end{matrix}\right.
+\label{eq:sigma_EBM}
+\end{align}
+produces much better results than a constant value. There are different reasons why the noise amplitude might need to be adjusted to  $Re$, \dm{CITA la ultima seccion de este capítulo}. The most obvious one is that, for increasing $Re$ one expects an increase in the chaotic characteristics of the flow that are modeled with the noise term. However at any sufficiently high $Re$ there should be some chaotic dynamics, therefore the upper bound, and the stochastic term cannot become bigger than the main dynamics of the model, therefore the upper limit. 
 
 
+\subsection{Overview of the model}
+Equations \ref{eq:SPDE_q_EBM} and \ref{eq:PDE_u_EBM} together with the local dynamics \ref{eq:loc_q_EBM} and \ref{eq:loc_u_EBM} and the parameters defined in equations \ref{eq:gamma_EBM} and \ref{eq:sigma_EBM}, define the EBM. Let us highlight three important features of the model.
 
+First, when $A=0$ or $Wo=0$ one recovers the original BM. At $A=0$ or $Wo=0$, there is no oscillatory component in $\bar{U}$ or $U_{c}$, $G_{p}+F_{v_{0}}=0$ and at these $A$ and $Wo$ $\lambda \equiv 0$. 
 
-%\subsection{Numerical method}
-%We integrate equations \ref{eq:SPDE_q} and \ref{eq:PDE_u} following \cite{barkley2015rise}. We discretise the second order derivatives with central finite differences of second order, and the first order derivatives with a first order upwind scheme. We integrate the system using an explicit Euler method, with a time step size $\Delta t=0.0025 D/U$. We consider a pipe of length $L=100D$ and a uniform grid spacing $\Delta x=0.5D$. The stochastic term is modeled as white gaussian noise in space and time. In figure ... we show a grid convergence study of our code.
+Second, the control parameter $r$ of the original BM set the behaviour of the localized turbulent patches. In the case of the EBM, the equivalent parameter $r_{EBM}=r \bar{U} \left(t + \phi \right)$ now oscillates between a minima and a maxima, at a frequency set by the combination of $Re$ and $Wo$. As we show below, at low frequencies $Wo \lesssim 4$ we see a quasi-steady behaviour of the puffs. When the instantaneous parameter $r_{EBM} <0$ puffs tend to shrink and decay, whereas at $r_{EBM}>1$ they tend to elongate into slugs. At higher frequencies, $Wo \gtrsim 17$ we see no effect of the pulsation on the puffs, since the pulsation has such a high frequency for puffs to adapt to it. At intermediate frequencies, at the boundary between these two behaviours, we see more complicated dynamics.
+
+Third, at intermediate frequencies $5 \lesssim Wo \lesssim 15$, and sufficiently high $A \gtrsim 0.5$, $\lambda >0$. As we show below there is a competition between the time dependent $r_{EBM}$ and $\lambda$ in this regime, that promotes puffs survival. 
+
+\section{Numerical method}
+We integrate equations \ref{eq:SPDE_q_EBM} and \ref{eq:PDE_u_EBM} following \cite{barkley2015rise}. We discretise the second order derivatives with central finite differences of second order, and the first order derivatives with a first order upwind scheme. We integrate the system using an explicit Euler method, with a time step size $\Delta t=0.0025 D/U$. We consider a pipe of length $L=100D$ and a uniform grid spacing $\Delta x=0.5D$. The stochastic term is modeled as white Gaussian noise in space and time. In figure ... we show a grid convergence study of our code. 
+
+Our code, after selecting the desired $A$, $Re$ and $Wo$ first integrates the corresponding laminar profile to obtain all the time dependent parameters: $\bar{U}$, $U_{c}$, $G_{p}$, $F_{v_{0}}$ and $\lambda$. It then uses this pre-computed parameters to integrate the model variables $q$ and $u$.
 
 %Later, and as part of this thesis a GPU version of the code was developed. The variables $q$ and $u$ are expanded in a trunceted Fourier mode series. The derivatives are then computed using Fourier. Two different integrators where considered, a two-step Adams Bashforth and a Runge Kutta of order 4. The details of the code can be found ¿? in appendix C?
 
@@ -156,7 +173,7 @@ As we show in \dm{Aqui deberas citar el capitulo 7 y 8, y la seccion correspondi
 % - Phase average comparison of model and DNS
 % - Effect of ignoring new parameter... 
 % - Effect of constant noise term...
-% - Lessons learned from the model
+% - Front speed and lifetimes using the model...
 \section{Results of the extended model}
 
 
@@ -166,9 +183,10 @@ As we show in \dm{Aqui deberas citar el capitulo 7 y 8, y la seccion correspondi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION: Limitiations of my model
-%   - Shape of the pulsation
+%   - Shape of the pulsation (better at smaller amplitudes)
 %   - Shape of the puff! (downstream front speed)
 %   - Importance of noise + gamma parameter (some dynamics are not represented well enough)
+%   - Related with model robustness (decreases with Amplitude)
 %   - Over/underestimating lifetimes. 
 %   - Turbulence decay?
 \section{Limitations of the extended model}
@@ -189,7 +207,7 @@ As we show in \dm{Aqui deberas citar el capitulo 7 y 8, y la seccion correspondi
 
 % NEEDED MEDIA:
 % - USING THE DNS the phase shift between qint/qmax y Wo, a Re constante? QUizas Re=2100...
-
+% - Grid convergence study of numerical method
 
 % NEEDED CITATIONS:
 % Effect of pulsation Xu (2017?)
