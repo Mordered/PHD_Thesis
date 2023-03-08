@@ -26,11 +26,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 6.TRANSITION MECHANISMS IN PULSATILE PIPE FLOW (wvfm)
   Steady pipe flow
-  Helical instability
+  Helical instability (compare with experiments)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 7.TURBULENCE IN THE TRANSITION REGIME 
-  Use the results of Barkley(only DNS) + Entropy + wvfm + FOR
+  Use the results of FOR(compare experiments) + Entropy + wvfm + 
+      Barkley(only DNS)
   Concept of Pull-Back Attractor  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,7 +52,7 @@
 
 % AP3: BARKLEY GPU?
 
-% AP4: DNS + GRID
+% AP4: DNS + GRID + Retau(mean and max) + EBM vs DNS
 
 % AP5: Catalogue of laminar pulsatile pipe flows: copy fig 4 of
        the waveform paper, include the profile and the lambda..

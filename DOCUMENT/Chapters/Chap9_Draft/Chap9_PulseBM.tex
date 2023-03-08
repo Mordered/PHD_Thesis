@@ -11,6 +11,13 @@
 \usepackage{xspace}
 %\newcommand{\note}[1]{{\color{red} \textbf{#1}}}
 \DeclareRobustCommand{\dm}[1]{{\color{blue}(\textbf{Dani}: \textit{#1}\xspace)}}
+% averaging brackets
+\DeclareRobustCommand{\lla}{\left\langle}
+\DeclareRobustCommand{\rra}{\right\rangle}
+% Flow parameters
+\DeclareRobustCommand{\Reynolds}{\ensuremath{R\hspace{-0.1em}e}\xspace}     % bulk Reynolds
+\DeclareRobustCommand{\Womersley}{\ensuremath{W\hspace{-0.25em}o}\xspace}    % Womersley number
+\DeclareRobustCommand{\Amplitude}{\ensuremath{A}\xspace}    % Amplitude
 
 % Title
 \title{CHAPTER 9: Model for puffs and slugs in pulsatile pipe flow}
@@ -114,7 +121,7 @@ As we show in \dm{Aqui deberas citar el capitulo 7 y 8, y la seccion correspondi
 
 By introducing these changes to the model, the local dynamics of $q$ in the EBM are described by the following ODE:
 \begin{align}
-\dot{q}=f_EBM}\left(q,u\right)=q \left[r\bar{U}\left(t+\phi\right)+\gamma \lambda + u-U_{c}\left(t\right)-\left(r\bar{U}\left(t+\phi\right)+\delta \right) \left(q -1 \right)^{2} \right]\text{.}
+\dot{q}=f_{EBM}\left(q,u\right)=q \left[r\bar{U}\left(t+\phi\right)+\gamma \lambda + u-U_{c}\left(t\right)-\left(r\bar{U}\left(t+\phi\right)+\delta \right) \left(q -1 \right)^{2} \right]\text{.}
 \label{eq:loc_q_EBM}
 \end{align}
 
@@ -156,10 +163,25 @@ Second, the control parameter $r$ of the original BM set the behaviour of the lo
 
 Third, at intermediate frequencies $5 \lesssim Wo \lesssim 15$, and sufficiently high $A \gtrsim 0.5$, $\lambda >0$. As we show below there is a competition between the time dependent $r_{EBM}$ and $\lambda$ in this regime, that promotes puffs survival. 
 
-\section{Numerical method}
+\section{Numerical methods and fit of the EBM}
 We integrate equations \ref{eq:SPDE_q_EBM} and \ref{eq:PDE_u_EBM} following \cite{barkley2015rise}. We discretise the second order derivatives with central finite differences of second order, and the first order derivatives with a first order upwind scheme. We integrate the system using an explicit Euler method, with a time step size $\Delta t=0.0025 D/U$. We consider a pipe of length $L=100D$ and a uniform grid spacing $\Delta x=0.5D$. The stochastic term is modeled as white Gaussian noise in space and time. In figure ... we show a grid convergence study of our code. 
 
-Our code, after selecting the desired $A$, $Re$ and $Wo$ first integrates the corresponding laminar profile to obtain all the time dependent parameters: $\bar{U}$, $U_{c}$, $G_{p}$, $F_{v_{0}}$ and $\lambda$. It then uses this pre-computed parameters to integrate the model variables $q$ and $u$.
+Our code, after selecting the desired $A$, $Re$ and $Wo$ first integrates the corresponding laminar profile to obtain all the time dependent parameters: $\bar{U}$, $U_{c}$, $G_{p}$, $F_{v_{0}}$ and $\lambda$. It then uses this pre-computed parameters to integrate the model variables $q$ and $u$. In the second row of table~\ref{tab:params}, we include the fitted parameters of the EBM.
+
+\begin{table}
+\centering
+\begin{tabular}{cccccccc}
+              &$Re_{0}$ & $Re_{1}$ & $\zeta$ & $Di$  & $\sigma$ & $\delta$ & $\epsilon$ \\ \hline
+BM & 1920    & 2250     & 0.79    & 0.13 & 0.5      & 0.1      & 0.1         \\ 
+EBM& \textcolor{blue}{1820}    & 2250     & \textcolor{blue}{0.69}    & 0.13 & \textcolor{blue}{$0.2\leq \sigma \leq0.85$} & 0.1 & 0.1
+\end{tabular}
+\caption{BM parameters as described in \cite{barkley2015rise} and the value of parameters used in the EBM. Colored \textcolor{blue}{blue} parameters represent changes with respect to the original BM.}
+\label{tab:params}
+\end{table}
+
+Note that in table~\ref{tab:params}, two important parameter changes are highlighted, $Re_{0}$ and $\eta$. In the original BM if $\Reynolds < Re_{0}$ puffs inmediately decay. We find that, for the case of pulsatile pipe flow, $Re_{0}=1920$ is too restrictive, and puffs tend to decay far earlier than what they should. Moreover puffs are observed to survive for long times even at $\Reynolds < 1920$, \cite{avila2010}. We find a good compromise by slightly decreasing $Re_{0}=1820$. 
+
+When $Re_{0}$ decreases, the front speeds of puffs change. Therefore as a counter-measure, and in order to correct the front speed of puffs in steady and pulsatile pipe flow, we also decrease the correction parameter $\eta$. These parameter changes donot have a big impact on steady pipe flow, as discussed in chapter \dm{Cita capitulo 5}, but do allow the EBM to better compare with a wider parametric space of pulsatile pipe flows.
 
 %Later, and as part of this thesis a GPU version of the code was developed. The variables $q$ and $u$ are expanded in a trunceted Fourier mode series. The derivatives are then computed using Fourier. Two different integrators where considered, a two-step Adams Bashforth and a Runge Kutta of order 4. The details of the code can be found ¿? in appendix C?
 
@@ -169,14 +191,78 @@ Our code, after selecting the desired $A$, $Re$ and $Wo$ first integrates the co
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Results using the model
-% - Parameter fitting and data base of comparison (why R0, eta)
-% - Phase average comparison of model and DNS
-% - Effect of ignoring new parameter... 
-% - Effect of constant noise term...
-% - Front speed and lifetimes using the model...
 \section{Results of the extended model}
+In this section we describe the results obtained with the EBM, and their qualitative and quantitative comparison with individual DNS results, listed in appendix \dm{cita el correspondiente apendice con todas los parámetros de las DNS}. We use the cross section axial vorticity square:
+\begin{align} 
+\langle\omega_{x}^{2}\rangle_{r,\theta} \left(x,t\right) =
+\frac{1}{\pi R^{2}}\int_{0}^{R}\int_{0}^{2\pi}\omega_{z}^{2}\, r\, \mathrm{d}r\, \mathrm{d}\theta
+% \text{.}
+\label{eq:crosssc}
+\end{align}
+as an indicator of the existence and magnitude of turbulence in each axial $x$ location in the DNS. Throughout this section we refer to this quantity and $q$ as turbulent indicators in DNS and model respectively. The parameter $q^{*}$ represents a general turbulent indicator and corresponds to eq.~\eqref{eq:crosssc} in DNS and $10 \cdot q$ in the EBM. 
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth, trim=0mm 0mm 0mm 0mm, clip=true]{Figures9/Fig1.jpg}
+\caption{Space-time diagram of the cross section integral of axial vorticity square (eq.~\eqref{eq:crosssc}) of DNS (left plots: a, c, e) and $10 \cdot q$ of the model (right plots b, d, f). The results correspond to DNS and model simulations in a $100D$ pipe. The DNS are initialised with the optimum perturbation scaled to $\left|\mathbf{u}^{\prime}_{0}\right|\approx 3e-2$ of magnitude and localized in a span of $5D$ following \cite{entropy2021}, while the model simulations with a localized puff of length $5D$. The figure is presented with respect to a moving frame $x^{*}$, moving with the bulk velocity $\bar{U}$. a) and b) correspond to $\Reynolds=3000$, $\Womersley=11$, $\Amplitude=0.5$. c) and d) correspond to $\Reynolds=2100$, $\Womersley=11$, $\Amplitude=0.75$. e) and f) correspond to $\Reynolds=2400$, $\Womersley=8$, $\Amplitude=1$. }
+\label{fig:fig1}
+\end{figure}
+In figure~\ref{fig:fig1} we include three examples of DNS and model comparison, and in the appendix \dm{cita} comparisons for all the DNS in appendix~\dm{cita el correspondiente apendice con todas los parámetros de las DNS}. The model is able to capture reasonably well the turbulent front speed and turbulence survival in all the cases, as seen qualitatively in figure~\ref{fig:fig1} and the appendix. 
 
 
+
+
+
+
+% - Phase average comparison of model and DNS...................................................................................
+\subsection{Phase averaged puffs in pulsatile pipe flow}
+In fig~\ref{fig:fig2}, we show a comparison between model simulations with $\sigma=0$ and phase averaged DNS results. At $\Reynolds=2100$, $\Womersley=11$ and $\Amplitude\leq 1$, turbulence is localized and modulated by the pulsation as in the case shown in fig.~\ref{fig:fig1}c) and d), see appendix \dm{Cita el apendice}. Although the model does not match perfectly the phase dependence and magnitude of $q^{*}$, see fig~\ref{fig:fig2}, both model and DNS show similar behaviours.
+
+According to the local phase space in fig.~\ref{fig:fig2}a, b, e and f, the structures at $t/T\approx0.5$ and $t/T\approx0.75$ are similar to localized turbulent slugs, \cite{Song2017,barkley2016}, not to splitting puffs as was previously suggested by \cite{entropy2021}. According to the model at $\Amplitude=1$, fig.~\ref{fig:fig2}f, turbulence elongates into a strong slug, while at $\Amplitude=0.5$, fig.~\ref{fig:fig2}b, the structure is more similar to a weak slug. As $\bar{U}^{*}$ decreases at $t/T=1$, the magnitude $q^{*}$ of slugs also decreases, fig.~\ref{fig:fig2}c and g. At $t/T\approx 1.25$ the slug shrinks to its minimum length and magnitude, becoming a turbulent puff, fig.~\ref{fig:fig2}d and h. This modulation is similar for other cases, and depends on the exact combination of \Reynolds, \Womersley and \Amplitude.
+
+
+
+
+
+% - Effect of ignoring new parameter...........................................................................................
+\subsection{Effect of $\gamma$ and $\lambda$ in the EBM}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth, trim=0mm 0mm 0mm 0mm, clip=true]{Figures9/Fig4.pdf}
+\caption{a) and c): Volume integral of turbulence indicator $q^{*}$, with respect to time for two pulsatile pipe flows. b) and d): time evolution of $\bar{U}^{*}$ (dashed line) and $\lambda_{\max}$ phase shifted in time a quarter of the period. a) and c) correspond to $\Reynolds=2100$, $\Womersley=9$ and $\Amplitude=0.5$. b) and d) correspond to $\Reynolds=2100$, $\Womersley=9$ and $\Amplitude=1$. The shaded areas denote two periods of interest, where different turbulence behaviours are identified.}
+\label{fig:fig4}
+\end{figure}
+
+In this section we explore the effects of including $\lambda$ in the model. As shown in fig~\ref{fig:fig3}, for the case of no instantaneous instability $\gamma=0$ the model behaves in two different ways. At $\Amplitude=0.5$, the results are almost identical to the case with $\gamma \geq 0$. At $\Amplitude \leq 0.5$ $\lambda$ is still quite small, fig~\ref{fig:fig4}b, and the dynamics are only dependant on the modulation due to the unsteady driving of the flow. At higher $\Amplitude=1$ however, puffs according to the model quickly decay for $\gamma=0$. This behaviour is not observed in DNS, where at $\Reynolds=2100$, $\Womersley=9$ and $\Amplitude=1$ puffs survive for several pulsation periods.
+
+This would mean that turbulence in pulsatile pipe flow takes advantage of two mechanisms to survive. The first mechanism is the mean shear, that is maximum in the phases of the period where turbulence perceives $\bar{U}>U$. We propose that the second one is the instantaneous instability of the flow, that increases turbulence production during the phases when the laminar profile is instantaneously unstable. In our model the two mechanisms are represented by $r \cdot \textcolor{blue}{\bar{U}^{*}\left(t\right)}$ and $\textcolor{blue}{\gamma \cdot \lambda \left( t \right)}$ respectively.
+
+
+
+
+% - Effect of constant noise term................................................................................................
+\subsection{Effect of noise in the EBM}
+
+
+
+
+
+% - Front speed and lifetimes using the model....................................................................................
+\subsection{Parametric study using the EBM}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth, trim=0mm 0mm 0mm 0mm, clip=true]{Figures9/Fig5.pdf}
+\caption{Mean upstream front speed of $q$ according to simulations of the EBM at several \Reynolds and \Womersley for three different pulsation amplitudes. The results correspond to the interpolated front speed of $23\times20$ \Reynolds and \Womersley different combinations, for $N_{i}=10$ simulations each. In a) at $\Amplitude=0.5$, in b) at $\Amplitude=0.75$ in c) at $\Amplitude=1$. The dotted lines denote the threshold between \Reynolds and \Womersley cases where more than half of the $N_{i}$ simulations show turbulence decay $q\leq0.005$ before $t/T<5$.}
+\label{fig:fig5}
+\end{figure}
+
+In this section use the model to perform simulations in a big \Womersley and \Reynolds parametric space for three different amplitudes. We consider $23$ equally spaced \Reynolds between $2050\leq \Reynolds \leq 3000$ and $20$ \Womersley between $5\leq \Womersley \leq 16$. For each combination of \Womersley, \Reynolds and \Amplitude we perform $N_{i}=10$ model simulations for $t/T<5$, and compute the mean upstream front speed of turbulence $c_{u}$. We stop the simulations at $t/T<5$, whenever turbulence decays in the whole domain, which we choose to correspond to $q \leq 0.005$, or when it fills the whole pipe. 
+
+In figure~\ref{fig:fig5} we plot the upstream front speed $c_{u}$ together with our threshold for turbulence decay. The area distinguished by this threshold corresponds to cases where more than half of the $N_{i}$ simulations decay. The model does not perfectly reproduce the front speed and survival observed in DNS at certain \Reynolds, \Womersley and \Amplitude, but shows a similar behavior with respect to \Reynolds, \Womersley and \Amplitude.
+
+At low amplitudes, $\Amplitude\leq0.5$ turbulence survival is mainly dependant on $\Reynolds$, fig.~\ref{fig:fig5}a. For $\Amplitude \geq 0.5$, the effect of the pulsation frequency becomes more important as $\Womersley$ decreases. In this regime the problem becomes more and more quasi-steady, and turbulence needs of a higher \Reynolds to survive as \Amplitude increases, as seen in figures~\ref{fig:fig5}b and c. For the \Womersley and \Amplitude we consider here, there is a sufficiently high \Reynolds at which turbulence is able to survive, fig.~\ref{fig:fig5}b. This critical \Reynolds increases as the amplitude \Amplitude increases.
+
+Regarding the upstream front speed $c_{u}$, for all $\Amplitude$ but particularly at $\Amplitude \geq 0.75$, the front speed depends mainly on the size of the period in terms of advective time units $T=\frac{\pi \Reynolds}{2 \Womersley^{2}}$. As $T$ increases, either by increasing \Reynolds or decreasing \Womersley, the flow stays longer in phases of the period where turbulence elongates, $c_{u}<U$. This also means that turbulence stays longer in phases of the period where it tends to shrink and decay, $c_{u}>U$. However, the decay rate is faster than the elongation rate resulting in an average $c_{u}<U$. For sufficiently small $T$, as for $\Womersley \gtrsim 16$, the front speeds of steady pipe flow are recovered for all \Amplitude.
 
 
 
@@ -184,11 +270,10 @@ Our code, after selecting the desired $A$, $Re$ and $Wo$ first integrates the co
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION: Limitiations of my model
 %   - Shape of the pulsation (better at smaller amplitudes)
-%   - Shape of the puff! (downstream front speed)
-%   - Importance of noise + gamma parameter (some dynamics are not represented well enough)
+%   - Shape of the puff! (downstream front)
+%   - Sensitivity with noise + gamma parameter (some dynamics are not represented well enough)
 %   - Related with model robustness (decreases with Amplitude)
 %   - Over/underestimating lifetimes. 
-%   - Turbulence decay?
 \section{Limitations of the extended model}
 
 
@@ -206,8 +291,9 @@ Our code, after selecting the desired $A$, $Re$ and $Wo$ first integrates the co
 
 
 % NEEDED MEDIA:
-% - USING THE DNS the phase shift between qint/qmax y Wo, a Re constante? QUizas Re=2100...
+% - USING THE DNS the phase shift between qint/qmax y \bar{U}, a Re constante? Quizas Re=2100...
 % - Grid convergence study of numerical method
+% - Constant noise term. Repeat fig 1 using a constant sigma =0.5
 
 % NEEDED CITATIONS:
 % Effect of pulsation Xu (2017?)
