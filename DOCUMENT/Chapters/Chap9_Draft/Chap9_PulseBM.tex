@@ -218,6 +218,13 @@ In figure~\ref{fig:fig1} we include three examples of DNS and model comparison, 
 \subsection{Phase averaged puffs in pulsatile pipe flow}
 In fig~\ref{fig:fig2}, we show a comparison between model simulations with $\sigma=0$ and phase averaged DNS results. At $\Reynolds=2100$, $\Womersley=11$ and $\Amplitude\leq 1$, turbulence is localized and modulated by the pulsation as in the case shown in fig.~\ref{fig:fig1}c) and d), see appendix \dm{Cita el apendice}. Although the model does not match perfectly the phase dependence and magnitude of $q^{*}$, see fig~\ref{fig:fig2}, both model and DNS show similar behaviours.
 
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth, trim=0mm 0mm 0mm 0mm, clip=true]{Figures9/Fig2.pdf}
+\caption{Local phase space of turbulence indicator (axial vorticity in DNS and $10 \cdot q$ in model) and centerline velocity $u$ at different pulsation phases. The results correspond to phase averaged DNS for $30$ pulsation periods, and model simulations with $\sigma=0$ at $\Reynolds=2100$ and $\Womersley=11$. Cases a)-d) are for $\Amplitude=0.5$, cases e)-h) for $\Amplitude=1$. The phase of each subplot is indicated at the top of the corresponding subplot column.}
+\label{fig:fig2}
+\end{figure}
+
 According to the local phase space in fig.~\ref{fig:fig2}a, b, e and f, the structures at $t/T\approx0.5$ and $t/T\approx0.75$ are similar to localized turbulent slugs, \cite{Song2017,barkley2016}, not to splitting puffs as was previously suggested by \cite{entropy2021}. According to the model at $\Amplitude=1$, fig.~\ref{fig:fig2}f, turbulence elongates into a strong slug, while at $\Amplitude=0.5$, fig.~\ref{fig:fig2}b, the structure is more similar to a weak slug. As $\bar{U}^{*}$ decreases at $t/T=1$, the magnitude $q^{*}$ of slugs also decreases, fig.~\ref{fig:fig2}c and g. At $t/T\approx 1.25$ the slug shrinks to its minimum length and magnitude, becoming a turbulent puff, fig.~\ref{fig:fig2}d and h. This modulation is similar for other cases, and depends on the exact combination of \Reynolds, \Womersley and \Amplitude.
 
 
@@ -236,14 +243,6 @@ According to the local phase space in fig.~\ref{fig:fig2}a, b, e and f, the stru
 In this section we explore the effects of including $\lambda$ in the model. As shown in fig~\ref{fig:fig3}, for the case of no instantaneous instability $\gamma=0$ the model behaves in two different ways. At $\Amplitude=0.5$, the results are almost identical to the case with $\gamma \geq 0$. At $\Amplitude \leq 0.5$ $\lambda$ is still quite small, fig~\ref{fig:fig4}b, and the dynamics are only dependant on the modulation due to the unsteady driving of the flow. At higher $\Amplitude=1$ however, puffs according to the model quickly decay for $\gamma=0$. This behaviour is not observed in DNS, where at $\Reynolds=2100$, $\Womersley=9$ and $\Amplitude=1$ puffs survive for several pulsation periods.
 
 This would mean that turbulence in pulsatile pipe flow takes advantage of two mechanisms to survive. The first mechanism is the mean shear, that is maximum in the phases of the period where turbulence perceives $\bar{U}>U$. We propose that the second one is the instantaneous instability of the flow, that increases turbulence production during the phases when the laminar profile is instantaneously unstable. In our model the two mechanisms are represented by $r \cdot \textcolor{blue}{\bar{U}^{*}\left(t\right)}$ and $\textcolor{blue}{\gamma \cdot \lambda \left( t \right)}$ respectively.
-
-
-
-
-% - Effect of constant noise term................................................................................................
-\subsection{Effect of noise in the EBM}
-
-
 
 
 
