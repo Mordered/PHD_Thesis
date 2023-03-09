@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 7.TURBULENCE IN THE TRANSITION REGIME 
   Use the results of FOR(compare experiments) + Entropy + wvfm + 
-      Barkley(only DNS)
+      Barkley(only DNS): talk about localization of puffs
   Concept of Pull-Back Attractor  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -268,12 +268,36 @@ Regarding the upstream front speed $c_{u}$, for all $\Amplitude$ but particularl
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION: Limitiations of my model
-%   - Shape of the pulsation (better at smaller amplitudes)
-%   - Shape of the puff! (downstream front)
-%   - Sensitivity with noise + gamma parameter (some dynamics are not represented well enough)
-%   - Related with model robustness (decreases with Amplitude)
-%   - Over/underestimating lifetimes. 
 \section{Limitations of the extended model}
+When correctly fitted the EBM captures the dynamics of pulsatile pipe flow in a broad parametric regime, but it has some limitiations that need to be mentioned. In this section we comment on these limitations and also include some suggestions on possible ways to improve the model in future analysis. We differentiate between limitations that we understand are inherited from the original BM, and those that are new to the EBM.
+
+As a general comment and different to the original BM, the EBM shows a much worse robustness with respect to the model parameters. Specially worrying are the dependence of the results to the noise intensity $\sigma$ and linear instability strength $\gamma$ parameters. 
+
+In figure \dm{cita la figura}, we show the change in front speed when setting $\gamma$ or $\sigma$ constant. As observed in the figure the front speed, specially at high $\Amplitude>0.5$, diverges from the DNS results. 
+
+\subsection{Limitations inherited from the BM}
+The EBM is highly dependant on the parameter $\sigma$ and does not perfectly capture the shape of puffs and slugs as in the DNS case. We believe that these limitations are inherited from the original BM, as we describe below.
+
+\subsubsection{The problem with parameter $\sigma$}
+In the original BM, the paramater $\sigma$ was included in order to model puff decay, split and intermittency. As we explained in \dm{Cita el capitulo 5}, the original BM fails to capture the intermittent behaviour of localized turbulence in steady pipe flow at $2250 \lesssim \Reynolds \lesssim 2500$. In this regime, the model indicates that puffs elongate until they fill the whole domain with turbulence, while actual DNS show that in this regime turbulent patches (puffs or slugs) coexist with laminar patches. 
+
+Coincidentally, for pulsatile pipe flow, at these $\Reynolds$ and $A>0.5$, according to our DNS \dm{aqui citare el futuro capitulo 7 donde espero enseñar todas las DNS que he calculado, y comentar mas a fondo el comportamiento de los puffetos} puffs remain localized for several $6\lessim Wo \lesssim 12$. If the parameter $\sigma$ is not scaled with $\Reynolds$, puffs at these flow parameters tend to elongate in the EBM. 
+
+At lower $Re\approx 2100$, if $\sigma>0.5$ puffs in the EBM tend to decay much often that what they should, according to our DNS. Therefore, in order to capture the behaviour of puffs at these flow parameter, we must set $\sigma<0.5$. 
+
+\subsubsection{The shape of elongated patches}
+When one uses the EBM to study the shape of elongated turbulent structures at certain phases of the period, the model diverges from the DNS results. The EBM clearly overestimates the ratio between the magnitude of $q$ in the core of the turbulent patch and the magnitude of the upstream and downstream fronts. This was also observed in the case of slugs in the BM.
+
+
+\subsubsection{The problems with parameter $\gamma$}
+As described at the beginning of this chapter, the EBM was expected to work worse as $\Amplitude$ increases. At higher $\Amplitude$ the laminar profile becomes less similar to the simple parabolic profile of steady pipe flow \dm{cita el apendice con el catálogo de perfiles laminares}. In order to account for the shape of the pulsatile laminar profile, we proposed to use the instantaneous linear instability $\lambda$, and the parameter $\gamma$ that modulates it. Both work reasonably well, as long as $\gamma$ is correctly fitted. But as soon as $\gamma$ is changed puffs either decay or elongate when they shouldnot.
+
+Also due to the definition of $\gamma$ the model overestimates the lifetime of puffs at certain flow parameters. In particular, according to the EBM, puffs at $10 \lesssim Wo \lesssim 15$, $A= 1$ and $1800 \lesssim \Reynolds \lesssim 2050$ survive the pulsation. This is obviously not observed in DNS of pulsatile pipe flow, where at $Re <2050$ and $A=1$ puffs tend to decay no matter the pulsation frequency. Moreover, at these flow parameters, the EBM are clearly dominated by the parameter $\lambda$, and therefore on $\gamma$. 
+
+Our EBM considers that, as long as $\lambda>0$, turbulence can make use of the instantaneous linear instability to grow, but this may not be the case in a full DNS. At a given time step, the mean profile could be highly perturbed, and therefore be much different than the laminar profile. In this case, puffs would not have the chance to take advantage of the linear instability, and could even decay. This feature could be easily implented in the code by, setting $\gamma$ to zero at random periods during the integration.
+
+
+
 
 
 
@@ -292,7 +316,8 @@ Regarding the upstream front speed $c_{u}$, for all $\Amplitude$ but particularl
 % NEEDED MEDIA:
 % - USING THE DNS the phase shift between qint/qmax y \bar{U}, a Re constante? Quizas Re=2100...
 % - Grid convergence study of numerical method
-% - Constant noise term. Repeat fig 1 using a constant sigma =0.5
+% - Generate a (2 rows (Re) and 3 columns(A)) plot with the upstream front speed, with DNS results (when possible) and model results when not.  
+% - Lifetimes at certain Re, Wo, and A
 
 % NEEDED CITATIONS:
 % Effect of pulsation Xu (2017?)
