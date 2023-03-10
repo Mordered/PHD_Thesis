@@ -1,0 +1,75 @@
+\documentclass{article}
+
+% PACKAGES
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+% Dani packages
+\usepackage{xcolor}
+\usepackage{xspace}
+%\newcommand{\note}[1]{{\color{red} \textbf{#1}}}
+\DeclareRobustCommand{\dm}[1]{{\color{blue}(\textbf{Dani}: \textit{#1}\xspace)}}
+% averaging brackets
+\DeclareRobustCommand{\lla}{\left\langle}
+\DeclareRobustCommand{\rra}{\right\rangle}
+% Flow parameters
+\DeclareRobustCommand{\Reynolds}{\ensuremath{R\hspace{-0.1em}e}\xspace}     % bulk Reynolds
+\DeclareRobustCommand{\Womersley}{\ensuremath{W\hspace{-0.25em}o}\xspace}    % Womersley number
+\DeclareRobustCommand{\Amplitude}{\ensuremath{A}\xspace}    % Amplitude
+
+% Title
+\title{CHAPTER 8: Causal analysis of puffs in pulsatile pipe flow}
+\date{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INTRODUCTION:
+\dm{En el capitulo 7 de la tesis describiré todos los resultados de DNS, incluido los de Entropy: donde por primera vez indicamos que los inflection points quizas ayuden a la supervivencia de la turbulencia.} In the previous chapter and our paper \citep{entropy2021} we showed some DNS results that suggest that puffs in pulsatile pipe flow take advantage of inflection points to survive the pulsation. However we were not able to rigorously demonstrate the actual effect inflection points have on turbulent puffs in pulsatile pipe flow. 
+
+In this chapter we try to answer this question by performing causal analyses of pulsatile pipe flows. Inspired by the ideas of \dm{cita paper de Jimenez sobre mean profile}, we perform DNS where we impose an artificially generated mean profile. We generate mean profiles without inflection points, and study turbulence survival on top of these mean profiles. In DNS with these mean profiles, we expect to observe quick puff decay at $\Reynolds \geq 2000$, $\Amplitude \geq 0.5$ and $8 \lesssim \Womersley \lesssim 17$. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% METHOD:
+% - Variational principle: develop the formula justify
+% - Show the profiles
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TGA:
+% - The TGA of the profiles, compare with the SW profile
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DNS:
+% - Describe the results for the steady pipe flow
+% - At constant Re effect of Wo and A
+% - Effect of changing Re
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Conclusion
+
+
+
+
+
+
+
+
+
+% BIBLIOGRAPHY
+\bibliographystyle{alpha}
+\bibliography{sample}
+\end{document}
+
+
+
+% NEEDED MEDIA:
+% 
+
+% NEEDED CITATIONS:
+% 
